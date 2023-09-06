@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.sql.Blob;
+
 @Entity
 @Table(name = "image")  //テーブル名の設定
 @Getter
@@ -15,8 +17,8 @@ public class Image {
 
     @Lob
     @Column(name = "data")
-    private byte[] data;
+    private Blob data;
 
-    @OneToOne(mappedBy = "blog")
-    private Blog blog;
+//    @OneToOne(mappedBy = "blog")
+//    private Blog blog;
 }
