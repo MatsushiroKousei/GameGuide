@@ -34,7 +34,6 @@ public class Blog {
     @LastModifiedDate       //更新の際レコードが生成される
     private Date updatedDate;
 
-    @OneToOne
-    @JoinColumn(name = "image_id")
-    private Image image;
+//    @OneToOne(mappedBy = "image",orphanRemoval=true)
+//    private Image image;
 }
