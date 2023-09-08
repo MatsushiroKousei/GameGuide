@@ -6,10 +6,10 @@ import lombok.Setter;
 
 import java.sql.Blob;
 
-@Entity
+@Entity //DBのテーブル構造を表したオブジェクト
 @Table(name = "image")  //テーブル名の設定
-@Getter
-@Setter
+@Getter //依存関係Lombok「取得する」を自動生成してくれる
+@Setter //依存関係Lombok「セットする」を自動生成してくれる
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)  //主キーが自動生成される
