@@ -24,6 +24,10 @@ public class BlogService {
         blogRepository.save(CreateBlog(blogRequest));
     }
 
+    /**
+     * Creaateはリクエストを受け取ってentityクラスをセットして返す
+     *
+     */
     private Blog CreateBlog(BlogRequest blogRequest){
         Blog blog = new Blog();
 

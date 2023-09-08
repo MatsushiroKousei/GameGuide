@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @Controller
@@ -17,8 +18,10 @@ public class HomeController {
     BlogService service;
     @GetMapping("/index")
     String index(Model model){
-//        List<Blog> blogs = service.blogGetAll();
-//        model.addAttribute("blogs" , blogs);
+        List<Blog> blogs = service.blogGetAll();
+        Blog top1 = blogs.get(0);
+        model.addAttribute("blogs" , blogs);
+        model.addAttribute("top1",top1);
     return "index";
     }
     @GetMapping("/postblog")
