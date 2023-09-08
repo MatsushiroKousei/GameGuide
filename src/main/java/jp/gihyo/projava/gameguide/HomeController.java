@@ -16,9 +16,12 @@ public class HomeController {
     BlogService service;
     @GetMapping("/index")
     String index(Model model){
-        List<Blog> blogs = service.blogGetAll();
-        model.addAttribute("blogs" , blogs);
+//        List<Blog> blogs = service.blogGetAll();
+//        model.addAttribute("blogs" , blogs);
     return "index";
     }
-
+    @GetMapping("/postblog")
+    String postblog(Model model){
+        return "postblog";
+    }
 }
