@@ -19,6 +19,10 @@ public class Image {
     @Column(name = "data")
     private Blob data;
 
+    @OneToOne
+    @JoinColumn(name = "blog_id")
+    private Image image;
+
 //    @OneToOne(mappedBy = "blog")
 //    private Blog blog;
 }
