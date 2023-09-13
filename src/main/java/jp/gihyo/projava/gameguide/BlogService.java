@@ -24,6 +24,9 @@ public class BlogService {
         blogRepository.save(CreateBlog(blogRequest));
     }
 
+    public List<Blog> getBlogTop3() {return blogRepository.getBlogList();}
+
+
     /**
      * Creaateはリクエストを受け取ってentityクラスをセットして返す
      *
