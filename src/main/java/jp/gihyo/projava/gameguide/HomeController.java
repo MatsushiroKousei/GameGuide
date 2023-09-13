@@ -54,6 +54,7 @@ public class HomeController {
 
     @GetMapping("/search")
     String search(Model model) {
+        model.addAttribute("blogRequest", new BlogRequest());
         return "search";
     }
 }
