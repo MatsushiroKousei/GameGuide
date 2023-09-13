@@ -12,4 +12,7 @@ public interface
 BlogRepository extends JpaRepository<Blog,Integer> {
     @Query("SELECT m FROM Blog m order by m.viewCount desc")
     List<Blog> getBlogList();
+
+    @Query("SELECT m FROM Blog m order by m.createdDate desc")
+    List<Blog> getDate();
 }
