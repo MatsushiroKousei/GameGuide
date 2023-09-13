@@ -19,7 +19,7 @@ public class HomeController {
     @GetMapping("/index")
     String index(Model model){
         List<Blog> blogs = service.blogGetAll();
-        Blog top1= blogs.get(0);
+        Blog top1 = blogs.get(0);
         model.addAttribute("blogs" , blogs);
         model.addAttribute("top1",top1);
     return "index";
@@ -33,11 +33,6 @@ public class HomeController {
     String post(Model model, @ModelAttribute BlogRequest blogRequest){
         service.create(blogRequest);
         return "redirect:/index";
-    }
-    @GetMapping("/search")
-    String search(Model model){
-        model.addAttribute("blogRequest" , new BlogRequest());
-        return "search";
     }
 
 }
