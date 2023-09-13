@@ -19,7 +19,6 @@ public class HomeController {
 
     @GetMapping("/index")
     String index(Model model) {
-
         List<Blog> blogs = service.getBlogTop3();
         Blog top1 = blogs.get(0);
         Blog top2 = blogs.get(1);
