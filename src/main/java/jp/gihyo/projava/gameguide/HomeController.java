@@ -47,13 +47,14 @@ public class HomeController {
         model.addAttribute("blogRequest", new BlogRequest());
         return "postblog";
     }
+
     @GetMapping("/blog/{id}")
-    String viewBlog(Model  model,@PathVariable("id")Integer id){
+    String viewBlog(Model model, @PathVariable("id") Integer id) {
         Blog blog = service.getByIdBlog(id);
         Integer count = blog.getViewCount();
         count++;
         blog.setViewCount(count);
-        model.addAttribute("blog" , blog);
+        model.addAttribute("blog", blog);
         service.save(blog);
         return "blog";
     }
@@ -62,17 +63,9 @@ public class HomeController {
     public String blogList(Model model) {
         return "search";
     }
-
     @RequestMapping("/blog/add")
     String post(Model model, @ModelAttribute BlogRequest blogRequest) {
         service.create(blogRequest);
         return "redirect:/index";
-    }
-}
-
-    @GetMapping("/search")
-    String search(Model model) {
-        model.addAttribute("blogRequest", new BlogRequest());
-        return "search";
     }
 }
