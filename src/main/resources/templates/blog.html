@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ゲーム攻略記事</title>
-  <link rel="stylesheet" href="css/sanitize.css">
-  <link rel="stylesheet" href="css/mainstyle.css">
+<!--  <link rel="stylesheet" href="css/sanitize.css">-->
+<!--  <link rel="stylesheet" href="css/mainstyle.css">-->
 </head>
 <body>
 <div class="wrapper">
@@ -60,7 +60,9 @@
         <li><h4><p th:text="${blog.title}"></p></h4></li>
         <li class="author">@Matsushiro</li>
       </ul>
-      <div class="blog_update_btn"><button>更新</button><button>削除</button></div>
+      <div class="blog_update_btn"><button>更新</button>
+        <a th:href="@{'/blog/delete/' + ${blog.id}}" >削除</a>
+      </div>
       <hr>
       <article class="toppostitem">
         <!-- <span class="toppostid">@Matsushiro</span> -->
