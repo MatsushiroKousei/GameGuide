@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.tyhmeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ゲーム攻略記事</title>
+  <link rel="stylesheet" href="css/sanitize.css">
+  <link rel="stylesheet" href="css/mainstyle.css">
+</head>
+<body>
+<div class="wrapper">
+  <head>
+    <div class="topheader">
+      x
+      <div class="wide_wrapper">
+        <ul>
+          <li>これは、ゲーム攻略記事サイトです。〇〇〇〇〇〇〇〇</li>
+          <li class="top_login"><button>ログイン</button><button>新規登録</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mainheader">
+      <h2 class="top">DRAGONQUEST 攻略</h2>
+    </div>
+    <!-- <div class="topmenu">
+        <ul class="nav">
+            <li><a href="">home</a></li>
+            <li><a href="">about</a></li>
+            <li><a href="">items</a></li>
+            <li><a href="">news</a></li>
+            <li><a href="">contact</a></li>
+        </ul>
+    </div> -->
+    <div class="topmenu">
+      <nav id="g_navi">
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/concept">コンセプト</a></li>
+          <li><a href="/menu">メニュー</a></li>
+          <li><a href="/access">アクセス</a></li>
+          <li><a href="/contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </head>
+  <div class="topsearth">
+    <form action="/search">
+      <label>新着順</label><input type="radio" name="order" value="新着順" checked>
+      <label>人気順</label><input type="radio" name="order" value="人気順">
+      <input type="text" id="search" name="search" size="20" /><button>検索</button>
+      <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>
+      <label>OR検索</label><input type="radio" name="keyword" value="OR">
+      <label>NOT検索</label><input type="radio" name="keyword" value="NOT">
+    </form>
+  </div>
+  <div class="container">
+    <div class="blog">
+      <ul>
+        <li><h4><p th:text="${blog.title}"></p></h4></li>
+        <li class="author">@Matsushiro</li>
+      </ul>
+      <div class="blog_update_btn"><button>更新</button><button>削除</button></div>
+      <hr>
+      <article class="toppostitem">
+        <!-- <span class="toppostid">@Matsushiro</span> -->
+        <div class="toppostdate">2023年09月04日</div>
+        <div class="toppostcontents">
+          <p th:text="${blog.text}"></p>
+
+          <div class="upload_imege">
+            <img src="/images/mv.jpg">
+          </div>
+          <div class="good_button">103<span>Good!</span><button>高評価する</button></div>
+      </article>
+    </div>
+    <div class="pagination">
+      前へ　１　２　３　・・・　最後へ
+    </div>
+    <div class="ranking_box">
+      <div class="ranking1">ランキング1位</div>
+      最後のボスを倒す攻略法
+      <div class="ranking2">ランキング２位</div>
+      妖精を仲間にする方法
+      <div class="ranking3">ランキング３位</div>
+      裏技・経験値の稼ぎ方
+    </div>
+    <div class="right_prbox">
+      ここにはPRが入ります。
+      ここにはPRが入ります。
+      ここにはPRが入ります。
+      ここにはPRが入ります。
+      ここにはPRが入ります。
+      ここにはPRが入ります。
+      ここにはPRが入ります。
+      ここにはPRが入ります。
+      ここにはPRが入ります。
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="wide_wrapper">
+    <div class="footer_logo">Matsushiro</div>
+    <div class="footer_link">
+      <div class="wrap">
+        <div class="cal">
+          <ul class="footer_nav">
+            <li><a href="" target="_blank">お知らせ</a></li>
+            <li><a href="" target="_blank">企業情報</a></li>
+            <li><a href="" target="_blank">プライバシーポリシー</a></li>
+            <li><a href="" target="_blank">サイトご利用にあたって</a></li>
+          </ul>
+        </div>
+        <div class="cal">
+          <ul class="footer_nav">
+            <li><a href="" target="_blank">ご意見・ご要望</a></li>
+            <li><a href="" target="_blank">サイトマップ</a></li>
+            <li><a href="" target="_blank">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">Copyright © Matsushiro Corporation All Rights Reserved.</div>
+  </div>
+</footer>
+</body>
