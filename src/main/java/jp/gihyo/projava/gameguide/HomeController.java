@@ -2,11 +2,14 @@ package jp.gihyo.projava.gameguide;
 
 
 import jp.gihyo.projava.gameguide.entity.Blog;
+import jp.gihyo.projava.gameguide.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.swing.text.html.parser.Entity;
@@ -41,9 +44,24 @@ public class HomeController {
     }
 
     @GetMapping("/postblog")
-    String postblog(Model model) {
+    String postBlog(Model model) {
         model.addAttribute("blogRequest", new BlogRequest());
         return "postblog";
+    }
+    @GetMapping("/blog/{id}")
+    String viewBlog(Model  model,@PathVariable("id")Integer id){
+        Blog blog = service.getByIdBlog(id);
+        Integer count = blog.getViewCount();
+        count++;
+        blog.setViewCount(count);
+        model.addAttribute("blog" , blog);
+        service.save(blog);
+        return "blog";
+    }
+
+    @RequestMapping("/search")
+    public String blogList(Model model) {
+        return "search";
     }
 
     @RequestMapping("/blog/add")
@@ -51,6 +69,7 @@ public class HomeController {
         service.create(blogRequest);
         return "redirect:/index";
     }
+}
 
     @GetMapping("/search")
     String search(Model model) {
