@@ -19,4 +19,6 @@ BlogRepository extends JpaRepository<Blog,Integer> { //entityを元にDBを操�
     @Query(value = "SELECT m FROM Blog m WHERE m.id = :id")
     Blog getByIdBlog(@Param("id")Integer id);
 
+
+
 }

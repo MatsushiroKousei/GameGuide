@@ -2,8 +2,10 @@ package jp.gihyo.projava.gameguide;
 
 
 import jp.gihyo.projava.gameguide.entity.Blog;
+import jp.gihyo.projava.gameguide.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -55,6 +57,11 @@ public class HomeController {
         model.addAttribute("blog" , blog);
         service.save(blog);
         return "blog";
+    }
+
+    @RequestMapping("/search")
+    public String blogList(Model model) {
+        return "search";
     }
 
     @RequestMapping("/blog/add")
