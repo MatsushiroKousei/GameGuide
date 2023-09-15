@@ -50,24 +50,35 @@
     <div class="topsearth">
 
         <form action="/search">
-            <label>新着順</label><input type="radio" name="order" value="新着順" checked>
-            <label>人気順</label><input type="radio" name="order" value="人気順">
+<!--            <label>新着順</label><input type="radio" name="order" value="新着順" checked>-->
+<!--            <label>人気順</label><input type="radio" name="order" value="人気順">-->
             <input type="text" id="search" name="search" size="20" /><button>検索</button>
-            <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>
-            <label>OR検索</label><input type="radio" name="keyword" value="OR">
-            <label>NOT検索</label><input type="radio" name="keyword" value="NOT">
+<!--            <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>-->
+<!--            <label>OR検索</label><input type="radio" name="keyword" value="OR">-->
+<!--            <label>NOT検索</label><input type="radio" name="keyword" value="NOT">-->
         </form>
 
     </div>
 
     <!-- <div class="maincontents"> -->
+
     <div class="container">
+
+        <p>デモ</p>
+        <article class="toppostitem" th:each="blogs: ${blogs}">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>
+            <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
+            <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
+            <div class="toppostbutton"><button>この記事を読む</button></div>
+        </article>
+
 
         <article class="toppostitem">
             <span class="toppostid">@Matsushiro</span>
             <div class="toppostdate">2023年09月04日</div>
             <h4 class="topposttittle">タイトルが表示</h4>
-            <div class="toppostcontents">記事内容が100文字？が表示・・・div>
+            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
                 <div class="toppostbutton"><button>この記事を読む</button></div>
         </article>
 
