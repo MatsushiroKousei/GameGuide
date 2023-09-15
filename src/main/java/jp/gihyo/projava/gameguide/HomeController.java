@@ -70,3 +70,10 @@ public class HomeController {
         return "redirect:/index";
     }
 }
+
+    @GetMapping("/search")
+    String search(Model model) {
+        model.addAttribute("blogRequest", new BlogRequest());
+        return "search";
+    }
+}
