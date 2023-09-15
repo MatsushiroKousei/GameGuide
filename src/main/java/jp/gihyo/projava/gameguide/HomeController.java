@@ -1,16 +1,15 @@
 package jp.gihyo.projava.gameguide;
 
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import jp.gihyo.projava.gameguide.entity.Blog;
 import jp.gihyo.projava.gameguide.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
@@ -66,6 +65,12 @@ public class HomeController {
     @RequestMapping("/blog/add")
     String post(Model model, @ModelAttribute BlogRequest blogRequest) {
         service.create(blogRequest);
+        return "redirect:/index";
+    }
+    @GetMapping("/blog/delete/{id}")
+    public String deleteBlog(@PathVariable Integer id, Model model) {
+        Blog blog = service.getByIdBlog(id);
+        service.deleteByIdBlog(blog);
         return "redirect:/index";
     }
 }
