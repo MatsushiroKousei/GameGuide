@@ -58,10 +58,10 @@ public class HomeController {
         return "blog";
     }
 
-    @RequestMapping("/search")
-    public String blogList(Model model) {
-        return "search";
-    }
+//    @RequestMapping("/search")
+//    public String blogList(Model model) {
+//        return "search";
+//    }
     @RequestMapping("/blog/add")
     String post(Model model, @ModelAttribute BlogRequest blogRequest) {
         service.create(blogRequest);
@@ -72,5 +72,13 @@ public class HomeController {
         Blog blog = service.getByIdBlog(id);
         service.deleteByIdBlog(blog);
         return "redirect:/index";
+    }
+
+    @RequestMapping("/search")
+    public String blogList(Model model, @ModelAttribute BlogsRequest blogsRequest) {
+        List<Blog> blogs = service.blogGetAll();
+        model.addAttribute("blogs",blogs );
+        service.search(blogsRequest);
+        return "search";
     }
 }
