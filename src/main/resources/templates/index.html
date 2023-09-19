@@ -71,28 +71,31 @@
 
                 <article class="toppostitem">
                     <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate"><p th:text="${top1.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${top1.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${top1.text}"></p></div>
-                        <div class="toppostbutton"><button>この記事を読む</button></div>
+                    <div class="toppostdate"><p th:text="${Date1.createdDate}"></p></div>
+                    <h4 class="topposttittle"><p th:text="${Date1.title}"></p></h4>
+                    <div class="toppostcontents"><p th:text="${Date1.text}"></p></div>
+                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${Date1.id}}" >
+                        この記事を読む</a></button></div>
                 </article>
 
                 <article class="toppostitem">
                     <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate">2023年09月04日</div>
-                    <h4 class="topposttittle">タイトルが表示</h4>
-                    <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
-                    <div class="toppostbutton"><button>この記事を読む</button></div>
+                    <div class="toppostdate"><p th:text="${Date2.createdDate}"></p></div>
+                    <h4 class="topposttittle"><p th:text="${Date2.title}"></p></h4>
+                    <div class="toppostcontents"><p th:text="${Date2.text}"></p></div>
+                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${Date2.id}}" >
+                        この記事を読む</a></button></div>
                 </article>
+
 
                 <article class="toppostitem">
                     <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate">2023年09月04日</div>
-                    <h4 class="topposttittle">タイトルが表示</h4>
-                    <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
-                    <div class="toppostbutton"><button>この記事を読む</button></div>
+                    <div class="toppostdate"><p th:text="${Date3.createdDate}"></p></div>
+                    <h4 class="topposttittle"><p th:text="${Date3.title}"></p></h4>
+                    <div class="toppostcontents"><p th:text="${Date3.text}"></p></div>
+                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${Date3.id}}" >
+                        この記事を読む</a></button></div>
                 </article>
-
             </div>
 
             <div class="pagination">
@@ -106,27 +109,33 @@
 
                 <article class="toppostitem">
                     <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate">2023年09月04日</div>
-                    <h4 class="topposttittle">タイトルが表示</h4>
-                    <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
-                    <div class="toppostbutton"><button>この記事を読む</button></div>
+                    <!--                    <th:block th:if="${top1 != null}" th:utext="${top1}"></th:block>-->
+                    <div class="toppostdate"><p th:text="${top1.createdDate}"></p></div>
+                    <h4 class="topposttittle"><p th:text="${top1.title}"></p></h4>
+                    <div class="toppostcontents"><p th:text="${top1.text}"></p></div>
+                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${top1.id}}" >
+                        この記事を読む</a></button></div>
                 </article>
 
                 <article class="toppostitem">
                     <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate">2023年09月04日</div>
-                    <h4 class="topposttittle">タイトルが表示</h4>
-                    <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
-                    <div class="toppostbutton"><button>この記事を読む</button></div>
-                </article>
+                    <!--                    <th:block th:if="${top2 != null}" th:utext="${top2}"></th:block>-->
+                    <div class="toppostdate"><p th:text="${top2.createdDate}"></p></div>
+                    <h4 class="topposttittle"><p th:text="${top2.title}"></p></h4>
+                    <div class="toppostcontents"><p th:text="${top2.text}"></p></div>
+
+                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${top2.id}}" >
+                        この記事を読む</a></button></div>                </article>
 
                 <article class="toppostitem">
                     <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate">2023年09月04日</div>
-                    <h4 class="topposttittle">タイトルが表示</h4>
-                    <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
-                    <div class="toppostbutton"><button>この記事を読む</button></div>
-                </article>
+                    <!--                    <th:block th:if="${top3 != null}" th:utext="${top3}"></th:block>-->
+                    <div class="toppostdate"><p th:text="${top3.createdDate}"></p></div>
+                    <h4 class="topposttittle"><p th:text="${top3.title}"></p></h4>
+                    <div class="toppostcontents"><p th:text="${top3.text}"></p></div>
+
+                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${top3.id}}" >
+                        この記事を読む</a></button></div>
 
             </div>
 
