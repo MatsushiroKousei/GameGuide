@@ -49,21 +49,21 @@ public class BlogService {
         return blog;
     }
 
-    public void search(BlogsRequest blogsRequest) {
-        blogRepository.save(SearchBlog(blogsRequest));
-    }
+//    public void search(BlogsRequest blogsRequest) {
+//        blogRepository.save(SearchBlog(blogsRequest));
+//    }
     /**
      * Searchはリクエストを受け取ってentityクラスをセットして返す
      *substringはList型には使えない。
      */
-    private Blog SearchBlog(BlogsRequest blogsRequest){
-        Blog blogList = new Blog();
+//    private Blog SearchBlog(BlogsRequest blogsRequest){
+//        Blog blogList = new Blog();
 //        blogList.setText(blogsRequest.getContents());
 //        String gtc = blogsRequest.getContents();
-        blogList.setText(blogsRequest.getContents());
-        blogList.setTitle(blogsRequest.getTitle());
-        blogList.setViewCount(0);
-        blogList.setCreatedDate(new Date());
-        return blogList;
-    }
+//        blogList.setText(blogsRequest.getContents());
+//        blogList.setTitle(blogsRequest.getTitle());
+//        blogList.setViewCount(0);
+//        blogList.setCreatedDate(new Date());
+//        return blogList;
+//    }
 }

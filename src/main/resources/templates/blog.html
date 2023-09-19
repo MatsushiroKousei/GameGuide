@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ゲーム攻略記事</title>
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"/>
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 <!--  <link rel="stylesheet" href="css/sanitize.css">-->
 <!--  <link rel="stylesheet" href="css/mainstyle.css">-->
 </head>
@@ -61,8 +64,9 @@
         <li class="author">@Matsushiro</li>
       </ul>
       <div class="blog_update_btn"><button>更新</button>
-        <a th:href="@{'/blog/delete/' + ${blog.id}}" >削除</a>
-      </div>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          削除
+        </button>      </div>
       <hr>
       <article class="toppostitem">
         <!-- <span class="toppostid">@Matsushiro</span> -->
@@ -125,4 +129,23 @@
     <div class="copyright">Copyright © Matsushiro Corporation All Rights Reserved.</div>
   </div>
 </footer>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        本当に削除しますか？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">いいえ</button>
+        <button type="button" class="btn btn-primary"><a th:href="@{'/blog/delete/' + ${blog.id}}" >はい</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
