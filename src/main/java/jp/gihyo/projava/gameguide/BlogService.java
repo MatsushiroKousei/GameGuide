@@ -1,14 +1,14 @@
 package jp.gihyo.projava.gameguide;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import jp.gihyo.projava.gameguide.entity.Blog;
 import jp.gihyo.projava.gameguide.repository.BlogRepository;
 import jp.gihyo.projava.gameguide.repository.ImageRepository;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class BlogService {
@@ -25,6 +25,16 @@ public class BlogService {
         blogRepository.save(CreateBlog(blogRequest));
     }
 
+    public List<Blog> getBlogTop3() {return blogRepository.getBlogList();}
+    public List<Blog> BlogDate() {return blogRepository.getDate();}
+
+
+    Blog getByIdBlog(Integer id) {return blogRepository.getByIdBlog(id);}
+
+    public void save(Blog con) {blogRepository.save(con);}
+
+    public void deleteByIdBlog(Blog id) {blogRepository.delete(id);}
+  
     /**
      * Creaateはリクエストを受け取ってentityクラスをセットして返す
      *
@@ -38,24 +48,22 @@ public class BlogService {
         blog.setCreatedDate(new Date());
         return blog;
     }
-//    public <LIst> List<HomeController.SearchItem> search(Integer id,String title,String text,Integer viewCount){
-//        String query = "SELECT * FROM blog WHERE search_data like '" + id + "'%' AND title '%"+ text + "%' AND '%"+viewCount+"%'";
-//        if(done.equals("true")){
-//            query += " AND done = true";
-//        }
-//        if(done.equals("false")){
-//            query += " AND done = false";
-//        }
-//        List<Map<String, Object>> result = this.blogRepository.queryForList(query);
-//        List<HomeController.SearchItem> list = result.stream().map(
-//                (Map<String, Object> row) -> new HomeController.SearchItem(
-//                        row.get("id").toString(),
-//                        row.get("title").toString(),
-//                        row.get("text").toString(),//,
-//                        row.get("viewCount").toString()
-////                        (Boolean)row.get("done")
-//
-//                )).toList();
-//        return list;
+
+//    public void search(BlogsRequest blogsRequest) {
+//        blogRepository.save(SearchBlog(blogsRequest));
+//    }
+    /**
+     * Searchはリクエストを受け取ってentityクラスをセットして返す
+     *substringはList型には使えない。
+     */
+//    private Blog SearchBlog(BlogsRequest blogsRequest){
+//        Blog blogList = new Blog();
+//        blogList.setText(blogsRequest.getContents());
+//        String gtc = blogsRequest.getContents();
+//        blogList.setText(blogsRequest.getContents());
+//        blogList.setTitle(blogsRequest.getTitle());
+//        blogList.setViewCount(0);
+//        blogList.setCreatedDate(new Date());
+//        return blogList;
 //    }
 }

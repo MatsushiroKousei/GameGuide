@@ -1,191 +1,12 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.tyhmeleaf.org">-->
-
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>ゲーム攻略記事</title>-->
-<!--    <link th:href="@{/mainstyle.css}" rel="stylesheet">-->
-<!--    <link th:href="@{/sanitize.css}" rel="stylesheet">-->
-<!--</head>-->
-
-<!--<body>-->
-<!--<div class="wrapper">-->
-
-<!--    <head>-->
-<!--        <div class="topheader">-->
-<!--            x-->
-<!--            <div class="wide_wrapper">-->
-<!--                <ul>-->
-<!--                    <li>これは、ゲーム攻略記事サイトです。〇〇〇〇〇〇〇〇</li>-->
-<!--                    <li class="top_login"><button>ログイン</button><button>新規登録</button></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="mainheader">-->
-<!--            <h2 class="top">DRAGONQUEST 攻略</h2>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; <div class="topmenu">-->
-<!--            <ul class="nav">-->
-<!--                <li><a href="">home</a></li>-->
-<!--                <li><a href="">about</a></li>-->
-<!--                <li><a href="">items</a></li>-->
-<!--                <li><a href="">news</a></li>-->
-<!--                <li><a href="">contact</a></li>-->
-<!--            </ul>-->
-<!--        </div> &ndash;&gt;-->
-
-<!--        <div class="topmenu">-->
-<!--            <nav id="g_navi">-->
-<!--                <ul>-->
-<!--                    <li><a href="/">ホーム</a></li>-->
-<!--                    <li><a href="/postblog">ブログ</a></li>-->
-<!--                    <li><a href="/menu">メニュー</a></li>-->
-<!--                    <li><a href="/access">アクセス</a></li>-->
-<!--                    <li><a href="/contact">お問い合わせ</a></li>-->
-<!--                </ul>-->
-<!--            </nav>-->
-<!--        </div>-->
-<!--    </head>-->
-<!--    <div class="topsearth">-->
-
-<!--        <form action="/search">-->
-<!--            <label>新着順</label><input type="radio" name="order" value="新着順" checked>-->
-<!--            <label>人気順</label><input type="radio" name="order" value="人気順">-->
-<!--            <input type="text" id="search" name="search" size="20" /><button>検索</button>-->
-<!--            <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>-->
-<!--            <label>OR検索</label><input type="radio" name="keyword" value="OR">-->
-<!--            <label>NOT検索</label><input type="radio" name="keyword" value="NOT">-->
-<!--        </form>-->
-
-<!--    </div>-->
-
-<!--    &lt;!&ndash; <div class="maincontents"> &ndash;&gt;-->
-<!--    <div class="container">-->
-
-<!--        <article class="toppostitem">-->
-<!--            <span class="toppostid">@Matsushiro</span>-->
-<!--            <div class="toppostdate">2023年09月04日</div>-->
-<!--            <h4 class="topposttittle">タイトルが表示</h4>-->
-<!--            <div class="toppostcontents">記事内容が100文字？が表示・・・div>-->
-<!--                <div class="toppostbutton"><button>この記事を読む</button></div>-->
-<!--        </article>-->
-
-<!--        <article class="toppostitem">-->
-<!--            <span class="toppostid">@Matsushiro</span>-->
-<!--            <div class="toppostdate">2023年09月04日</div>-->
-<!--            <h4 class="topposttittle">タイトルが表示</h4>-->
-<!--            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>-->
-<!--            <div class="toppostbutton"><button>この記事を読む</button></div>-->
-<!--        </article>-->
-
-<!--        <article class="toppostitem">-->
-<!--            <span class="toppostid">@Matsushiro</span>-->
-<!--            <div class="toppostdate">2023年09月04日</div>-->
-<!--            <h4 class="topposttittle">タイトルが表示</h4>-->
-<!--            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>-->
-<!--            <div class="toppostbutton"><button>この記事を読む</button></div>-->
-<!--        </article>-->
-
-<!--        <article class="toppostitem">-->
-<!--            <span class="toppostid">@Matsushiro</span>-->
-<!--            <div class="toppostdate">2023年09月04日</div>-->
-<!--            <h4 class="topposttittle">タイトルが表示</h4>-->
-<!--            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>-->
-<!--            <div class="toppostbutton"><button>この記事を読む</button></div>-->
-<!--        </article>-->
-
-<!--        <article class="toppostitem">-->
-<!--            <span class="toppostid">@Matsushiro</span>-->
-<!--            <div class="toppostdate">2023年09月04日</div>-->
-<!--            <h4 class="topposttittle">タイトルが表示</h4>-->
-<!--            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>-->
-<!--            <div class="toppostbutton"><button>この記事を読む</button></div>-->
-<!--        </article>-->
-
-<!--        <article class="toppostitem">-->
-<!--            <span class="toppostid">@Matsushiro</span>-->
-<!--            <div class="toppostdate">2023年09月04日</div>-->
-<!--            <h4 class="topposttittle">タイトルが表示</h4>-->
-<!--            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>-->
-<!--            <div class="toppostbutton"><button>この記事を読む</button></div>-->
-<!--        </article>-->
-
-<!--        <article class="toppostitem">-->
-<!--            <span class="toppostid">@Matsushiro</span>-->
-<!--            <div class="toppostdate">2023年09月04日</div>-->
-<!--            <h4 class="topposttittle">タイトルが表示</h4>-->
-<!--            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>-->
-<!--            <div class="toppostbutton"><button>この記事を読む</button></div>-->
-<!--        </article>-->
-
-<!--        <article class="toppostitem">-->
-<!--            <span class="toppostid">@Matsushiro</span>-->
-<!--            <div class="toppostdate">2023年09月04日</div>-->
-<!--            <h4 class="topposttittle">タイトルが表示</h4>-->
-<!--            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>-->
-<!--            <div class="toppostbutton"><button>この記事を読む</button></div>-->
-<!--        </article>-->
-
-<!--        <article class="toppostitem">-->
-<!--            <span class="toppostid">@Matsushiro</span>-->
-<!--            <div class="toppostdate">2023年09月04日</div>-->
-<!--            <h4 class="topposttittle">タイトルが表示</h4>-->
-<!--            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>-->
-<!--            <div class="toppostbutton"><button>この記事を読む</button></div>-->
-<!--        </article>-->
-
-<!--        <article class="toppostitem">-->
-<!--            <span class="toppostid">@Matsushiro</span>-->
-<!--            <div class="toppostdate">2023年09月04日</div>-->
-<!--            <h4 class="topposttittle">タイトルが表示</h4>-->
-<!--            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>-->
-<!--            <div class="toppostbutton"><button>この記事を読む</button></div>-->
-<!--        </article>-->
-
-<!--        <div class="pagination">-->
-<!--            前へ　１　２　３　・・・　最後へ-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; </div>   &ndash;&gt;-->
-<!--    </div>-->
-<!--</div>-->
-<!--<footer>-->
-<!--    <div class="wide_wrapper">-->
-<!--        <div class="footer_logo">Matsushiro</div>-->
-<!--        <div class="footer_link">-->
-<!--            <div class="wrap">-->
-<!--                <div class="cal">-->
-<!--                    <ul class="footer_nav">-->
-<!--                        <li><a href="" target="_blank">お知らせ</a></li>-->
-<!--                        <li><a href="" target="_blank">企業情報</a></li>-->
-<!--                        <li><a href="" target="_blank">プライバシーポリシー</a></li>-->
-<!--                        <li><a href="" target="_blank">サイトご利用にあたって</a></li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--                <div class="cal">-->
-<!--                    <ul class="footer_nav">-->
-<!--                        <li><a href="" target="_blank">ご意見・ご要望</a></li>-->
-<!--                        <li><a href="" target="_blank">サイトマップ</a></li>-->
-<!--                        <li><a href="" target="_blank">お問い合わせ</a></li>-->
-<!--                    </ul>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="copyright">Copyright © Matsushiro Corporation All Rights Reserved.</div>-->
-<!--    </div>-->
-<!--</footer>-->
-<!--</body>-->
-
 <!DOCTYPE html>
-<html lang="Ja">
+<html xmlns:th="http://www.tyhmeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ゲーム攻略記事</title>
-    <link rel="stylesheet" href="css/sanitize.css">
-    <link rel="stylesheet" href="css/searchstyle.css">
+    <link th:href="@{/mainstyle.css}" rel="stylesheet">
+    <link th:href="@{/sanitize.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -193,11 +14,11 @@
 
     <head>
         <div class="topheader">
+            x
             <div class="wide_wrapper">
                 <ul>
-                    <li>これは、ゲーム攻略記事サイトです。</li>
+                    <li>これは、ゲーム攻略記事サイトです。〇〇〇〇〇〇〇〇</li>
                     <li class="top_login"><button>ログイン</button><button>新規登録</button></li>
-                    <!--<a href="" class="top_login">ログイン</a>-->
                 </ul>
             </div>
         </div>
@@ -218,7 +39,7 @@
             <nav id="g_navi">
                 <ul>
                     <li><a href="/">ホーム</a></li>
-                    <li><a href="/concept">コンセプト</a></li>
+                    <li><a href="/postblog">ブログ</a></li>
                     <li><a href="/menu">メニュー</a></li>
                     <li><a href="/access">アクセス</a></li>
                     <li><a href="/contact">お問い合わせ</a></li>
@@ -229,79 +50,115 @@
     <div class="topsearth">
 
         <form action="/search">
-            <label>新着順</label><input type="radio" name="order" value="新着順" checked>
-            <label>人気順</label><input type="radio" name="order" value="人気順">
+<!--            <label>新着順</label><input type="radio" name="order" value="新着順" checked>-->
+<!--            <label>人気順</label><input type="radio" name="order" value="人気順">-->
             <input type="text" id="search" name="search" size="20" /><button>検索</button>
-            <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>
-            <label>OR検索</label><input type="radio" name="keyword" value="OR">
-            <label>NOT検索</label><input type="radio" name="keyword" value="NOT">
+<!--            <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>-->
+<!--            <label>OR検索</label><input type="radio" name="keyword" value="OR">-->
+<!--            <label>NOT検索</label><input type="radio" name="keyword" value="NOT">-->
         </form>
 
     </div>
 
     <!-- <div class="maincontents"> -->
+
     <div class="container">
-        <div class="new_items">
 
-            <h2>「<a class="spell_orig" href=""></a>」の検索結果</h2>
-            <hr>
+        <p>デモ</p>
+        <article class="toppostitem" th:each="blogs: ${blogs}">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>
+            <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
+            <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
+            <div class="toppostbutton"><button><a th:href=@{/blog/"${blogs.id}"}>この記事を読む</a></button></div>
+        </article>
 
-            <article class="toppostitem">
-                <span class="toppostid">@Matsushiro</span>
-                <div class="toppostdate">2023年09月04日</div>
-                <h4 class="topposttittle">タイトルが表示</h4>
-                <div class="toppostcontents">記事内容が100文字？が表示・・・div>
-                    <div class="toppostbutton"><button>この記事を読む</button></div>
-            </article>
 
-            <article class="toppostitem">
-                <span class="toppostid">@Matsushiro</span>
-                <div class="toppostdate">2023年09月04日</div>
-                <h4 class="topposttittle">タイトルが表示</h4>
-                <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
+        <article class="toppostitem">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate">2023年09月04日</div>
+            <h4 class="topposttittle">タイトルが表示</h4>
+            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
                 <div class="toppostbutton"><button>この記事を読む</button></div>
-            </article>
+        </article>
 
-            <article class="toppostitem">
-                <span class="toppostid">@Matsushiro</span>
-                <div class="toppostdate">2023年09月04日</div>
-                <h4 class="topposttittle">タイトルが表示</h4>
-                <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
-                <div class="toppostbutton"><button>この記事を読む</button></div>
-            </article>
+        <article class="toppostitem">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate">2023年09月04日</div>
+            <h4 class="topposttittle">タイトルが表示</h4>
+            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
+            <div class="toppostbutton"><button>この記事を読む</button></div>
+        </article>
 
+        <article class="toppostitem">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate">2023年09月04日</div>
+            <h4 class="topposttittle">タイトルが表示</h4>
+            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
+            <div class="toppostbutton"><button>この記事を読む</button></div>
+        </article>
 
-            <article class="toppostitem">
-                <span class="toppostid">@Matsushiro</span>
-                <div class="toppostdate">2023年09月04日</div>
-                <h4 class="topposttittle">タイトルが表示</h4>
-                <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
-                <div class="toppostbutton"><button>この記事を読む</button></div>
-            </article>
+        <article class="toppostitem">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate">2023年09月04日</div>
+            <h4 class="topposttittle">タイトルが表示</h4>
+            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
+            <div class="toppostbutton"><button>この記事を読む</button></div>
+        </article>
 
-            <article class="toppostitem">
-                <span class="toppostid">@Matsushiro</span>
-                <div class="toppostdate">2023年09月04日</div>
-                <h4 class="topposttittle">タイトルが表示</h4>
-                <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
-                <div class="toppostbutton"><button>この記事を読む</button></div>
-            </article>
+        <article class="toppostitem">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate">2023年09月04日</div>
+            <h4 class="topposttittle">タイトルが表示</h4>
+            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
+            <div class="toppostbutton"><button>この記事を読む</button></div>
+        </article>
 
-            <article class="toppostitem">
-                <span class="toppostid">@Matsushiro</span>
-                <div class="toppostdate">2023年09月04日</div>
-                <h4 class="topposttittle">タイトルが表示</h4>
-                <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
-                <div class="toppostbutton"><button>この記事を読む</button></div>
-            </article>
+        <article class="toppostitem">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate">2023年09月04日</div>
+            <h4 class="topposttittle">タイトルが表示</h4>
+            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
+            <div class="toppostbutton"><button>この記事を読む</button></div>
+        </article>
 
-        </div>
+        <article class="toppostitem">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate">2023年09月04日</div>
+            <h4 class="topposttittle">タイトルが表示</h4>
+            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
+            <div class="toppostbutton"><button>この記事を読む</button></div>
+        </article>
+
+        <article class="toppostitem">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate">2023年09月04日</div>
+            <h4 class="topposttittle">タイトルが表示</h4>
+            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
+            <div class="toppostbutton"><button>この記事を読む</button></div>
+        </article>
+
+        <article class="toppostitem">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate">2023年09月04日</div>
+            <h4 class="topposttittle">タイトルが表示</h4>
+            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
+            <div class="toppostbutton"><button>この記事を読む</button></div>
+        </article>
+
+        <article class="toppostitem">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate">2023年09月04日</div>
+            <h4 class="topposttittle">タイトルが表示</h4>
+            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
+            <div class="toppostbutton"><button>この記事を読む</button></div>
+        </article>
 
         <div class="pagination">
             前へ　１　２　３　・・・　最後へ
         </div>
 
-        <!-- </div> -->
+        <!-- </div>   -->
     </div>
 </div>
 <footer>
@@ -328,5 +185,5 @@
         </div>
         <div class="copyright">Copyright © Matsushiro Corporation All Rights Reserved.</div>
     </div>
-</footer>
 </body>
+</footer>
