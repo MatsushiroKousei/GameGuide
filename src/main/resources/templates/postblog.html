@@ -38,20 +38,6 @@
                 </nav>
             </div>
         </head>
-        <div class="topsearth">
-
-            <form action="/search">
-                <label>新着順</label><input type="radio" name="order" value="新着順" checked>
-                <label>人気順</label><input type="radio" name="order" value="人気順">
-                <input type="text" id="search" name="search" size="20" /><button>検索</button>
-                <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>
-                <label>OR検索</label><input type="radio" name="keyword" value="OR">
-                <label>NOT検索</label><input type="radio" name="keyword" value="NOT">
-                <label>USER絞込み検索</label><input type="radio" name="terget" value="USER" checked>
-            </form>
-
-        </div>
-
         <div class="container">
             <div class="mypage_header">MYPAGE</div>
             <!-- <div class="post_header">新しい記事を書く</div> -->
@@ -81,6 +67,7 @@
                             placeholder="ここに記事を書きます。"th:field="*{contents}"></textarea>
                         <div class="center_wrap">
                             <div class="box400">
+
                                 <div class="post_blog"><button type="submit">記事を投稿</button></div>
                             </div>
                         </div>
