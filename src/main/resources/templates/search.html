@@ -66,22 +66,21 @@
 
         <p>デモ</p>
 
-        <article class="toppostitem" th:each="blog: ${title}">
-            <span class="toppostid">@Matsushiro</span>
-            <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>
-            <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
-            <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
-            <div class="toppostbutton"><button><a th:href=@{/blogs/"${blogs.id}"}>この記事を読む</a></button></div>
-        </article>
+<!--        <article class="toppostitem" th:text="blog: ${blog.get(0).title}">-->
+<!--            <span class="toppostid">@Matsushiro</span>-->
+<!--            <div class="toppostdate"><p th:text="${blog.createdDate}"></p></div>-->
+<!--            <h4 class="topposttittle"><p th:text="${blog.title}"></p></h4>-->
+<!--            <div class="toppostcontents"><p th:text="${blog.text}"></p></div>-->
+<!--            <a th:href="@{/blog/{id}(id=${blog.id})}">この記事を読む</a>        </article>-->
 
 
-        <article class="toppostitem" th:each="blog: ${title}">
-            <span class="toppostid">@Matsushiro</span>
-            <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>
-            <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
-            <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
-            <div class="toppostbutton"><button><a th:href=@{/blog/"${blogs.id}"}>この記事を読む</a></button></div>
-    </article>
+<!--        <article class="toppostitem" th:value="blog: ${title}">-->
+<!--            <span class="toppostid">@Matsushiro</span>-->
+<!--            <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>-->
+<!--            <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>-->
+<!--            <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>-->
+<!--            <div class="toppostbutton"><button><a th:href=@{/blog/"${blogs.id}"}>この記事を読む</a></button></div>-->
+<!--    </article>-->
 
         <article class="toppostitem">
             <span class="toppostid">@Matsushiro</span>
