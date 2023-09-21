@@ -34,7 +34,9 @@ public class BlogService {
     public void save(Blog con) {blogRepository.save(con);}
 
     public void deleteByIdBlog(Blog id) {blogRepository.delete(id);}
-  
+
+    public List<Blog> partsSearch(String title) {return blogRepository.partsSearch(title);}
+
     /**
      * Creaateはリクエストを受け取ってentityクラスをセットして返す
      *
