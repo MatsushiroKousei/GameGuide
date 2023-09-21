@@ -71,7 +71,7 @@ public class HomeController {
     @GetMapping("/search")
     public String searchBlog(@RequestParam("search") String title,Model model){
         List<Blog> blogs2 = service.partsSearch(title);
-       model.addAttribute("blogs2", blogs2);
+       model.addAttribute("blogs", blogs2);
         return "search";
     }
 

@@ -66,13 +66,12 @@
 
         <p>デモ</p>
 
-<!--        <article class="toppostitem" th:text="blog: ${blog.get(0).title}">-->
-<!--            <span class="toppostid">@Matsushiro</span>-->
-<!--            <div class="toppostdate"><p th:text="${blog.createdDate}"></p></div>-->
-<!--            <h4 class="topposttittle"><p th:text="${blog.title}"></p></h4>-->
-<!--            <div class="toppostcontents"><p th:text="${blog.text}"></p></div>-->
-<!--            <a th:href="@{/blog/{id}(id=${blog.id})}">この記事を読む</a>        </article>-->
-
+        <article class="toppostitem">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate"><p th:text="${blogs.get(0).createdDate}"></p></div>
+            <h4 class="topposttittle"><p th:text="${blogs.get(0).title}"></p></h4>
+            <div class="toppostcontents"><p th:text="${blogs.get(0).text}"></p></div>
+            <a th:href="@{/blog/{id}(id=${blogs.get(0).id})}">この記事を読む</a>
 
 <!--        <article class="toppostitem" th:value="blog: ${title}">-->
 <!--            <span class="toppostid">@Matsushiro</span>-->
