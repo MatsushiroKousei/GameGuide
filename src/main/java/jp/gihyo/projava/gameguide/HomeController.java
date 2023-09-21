@@ -68,6 +68,12 @@ public class HomeController {
         service.deleteByIdBlog(blog);
         return "redirect:/index";
     }
+    @GetMapping("/search")
+    public String searchBlog(@RequestParam("search") String title,Model model){
+        List<Blog> blogs2 = service.partsSearch(title);
+       model.addAttribute("blogs2", blogs2);
+        return "search";
+    }
 
 //    @RequestMapping("/search")
 //    public String blogList(Model model) {

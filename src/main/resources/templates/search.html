@@ -38,7 +38,7 @@
         <div class="topmenu">
             <nav id="g_navi">
                 <ul>
-                    <li><a href="/">ホーム</a></li>
+                    <li><a href="/index">ホーム</a></li>
                     <li><a href="/postblog">ブログ</a></li>
                     <li><a href="/menu">メニュー</a></li>
                     <li><a href="/access">アクセス</a></li>
@@ -65,22 +65,23 @@
     <div class="container">
 
         <p>デモ</p>
-        <article class="toppostitem" th:each="blogs: ${blogs}">
+
+        <article class="toppostitem" th:each="blog: ${title}">
+            <span class="toppostid">@Matsushiro</span>
+            <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>
+            <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
+            <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
+            <div class="toppostbutton"><button><a th:href=@{/blogs/"${blogs.id}"}>この記事を読む</a></button></div>
+        </article>
+
+
+        <article class="toppostitem" th:each="blog: ${title}">
             <span class="toppostid">@Matsushiro</span>
             <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>
             <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
             <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
             <div class="toppostbutton"><button><a th:href=@{/blog/"${blogs.id}"}>この記事を読む</a></button></div>
-        </article>
-
-
-        <article class="toppostitem">
-            <span class="toppostid">@Matsushiro</span>
-            <div class="toppostdate">2023年09月04日</div>
-            <h4 class="topposttittle">タイトルが表示</h4>
-            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
-                <div class="toppostbutton"><button>この記事を読む</button></div>
-        </article>
+    </article>
 
         <article class="toppostitem">
             <span class="toppostid">@Matsushiro</span>
