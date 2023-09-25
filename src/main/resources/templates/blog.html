@@ -7,6 +7,11 @@
   <title>ゲーム攻略記事</title>
   <link th:href="@{/mainstyle.css}" rel="stylesheet">
   <link th:href="@{/sanitize.css}" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"/>
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<!--  <link rel="stylesheet" href="css/sanitize.css">-->
+<!--  <link rel="stylesheet" href="css/mainstyle.css">-->
 </head>
 <body>
 <div class="wrapper">
@@ -35,7 +40,7 @@
     <div class="topmenu">
       <nav id="g_navi">
         <ul>
-          <li><a href="/">ホーム</a></li>
+          <li><a href="/index">ホーム</a></li>
           <li><a href="/concept">コンセプト</a></li>
           <li><a href="/menu">メニュー</a></li>
           <li><a href="/access">アクセス</a></li>
@@ -61,8 +66,13 @@
         <li class="author">@Matsushiro</li>
       </ul>
       <div class="blog_update_btn"><button>更新</button>
+
         <button ID="deleteblog"><a th:href="@{'/blog/delete/' + ${blog.id}}" >削除</a></button></button>
       </div>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          削除
+        </button>      </div>
       <hr>
       <article class="toppostitem">
         <!-- <span class="toppostid">@Matsushiro</span> -->
@@ -148,8 +158,6 @@
                 var dialog = getElementById('postblogDialog')
                 dialog.style.left =((window.innerWidth -500) / 2) + 'px';
                 dialog.style.display = 'block';">実行</button>
-   <--デモ　end-->
-
 <!--  <script>-->
 <!--            document.getElementById("deleteblog").onclick = function () {-->
 <!--                let checkSaveFlg = window.confirm('ブログを削除してもよろしいですか？');-->
@@ -163,4 +171,23 @@
 <!--        </script>-->
 
 </footer>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        本当に削除しますか？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">いいえ</button>
+        <button type="button" class="btn btn-primary"><a th:href="@{'/blog/delete/' + ${blog.id}}" >はい</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>

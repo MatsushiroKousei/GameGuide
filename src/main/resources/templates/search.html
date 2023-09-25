@@ -38,7 +38,7 @@
         <div class="topmenu">
             <nav id="g_navi">
                 <ul>
-                    <li><a href="/">ホーム</a></li>
+                    <li><a href="/index">ホーム</a></li>
                     <li><a href="/postblog">ブログ</a></li>
                     <li><a href="/menu">メニュー</a></li>
                     <li><a href="/access">アクセス</a></li>
@@ -50,26 +50,36 @@
     <div class="topsearth">
 
         <form action="/search">
-            <label>新着順</label><input type="radio" name="order" value="新着順" checked>
-            <label>人気順</label><input type="radio" name="order" value="人気順">
+<!--            <label>新着順</label><input type="radio" name="order" value="新着順" checked>-->
+<!--            <label>人気順</label><input type="radio" name="order" value="人気順">-->
             <input type="text" id="search" name="search" size="20" /><button>検索</button>
-            <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>
-            <label>OR検索</label><input type="radio" name="keyword" value="OR">
-            <label>NOT検索</label><input type="radio" name="keyword" value="NOT">
+<!--            <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>-->
+<!--            <label>OR検索</label><input type="radio" name="keyword" value="OR">-->
+<!--            <label>NOT検索</label><input type="radio" name="keyword" value="NOT">-->
         </form>
 
     </div>
 
     <!-- <div class="maincontents"> -->
+
     <div class="container">
+
+        <p>デモ</p>
 
         <article class="toppostitem">
             <span class="toppostid">@Matsushiro</span>
-            <div class="toppostdate">2023年09月04日</div>
-            <h4 class="topposttittle">タイトルが表示</h4>
-            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
-                <div class="toppostbutton"><button>この記事を読む</button></div>
-        </article>
+            <div class="toppostdate"><p th:text="${blogs.get(0).createdDate}"></p></div>
+            <h4 class="topposttittle"><p th:text="${blogs.get(0).title}"></p></h4>
+            <div class="toppostcontents"><p th:text="${blogs.get(0).text}"></p></div>
+            <a th:href="@{/blog/{id}(id=${blogs.get(0).id})}">この記事を読む</a>
+
+<!--        <article class="toppostitem" th:value="blog: ${title}">-->
+<!--            <span class="toppostid">@Matsushiro</span>-->
+<!--            <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>-->
+<!--            <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>-->
+<!--            <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>-->
+<!--            <div class="toppostbutton"><button><a th:href=@{/blog/"${blogs.id}"}>この記事を読む</a></button></div>-->
+<!--    </article>-->
 
         <article class="toppostitem">
             <span class="toppostid">@Matsushiro</span>

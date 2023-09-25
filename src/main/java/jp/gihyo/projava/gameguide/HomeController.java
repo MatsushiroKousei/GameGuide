@@ -57,11 +57,6 @@ public class HomeController {
         service.save(blog);
         return "blog";
     }
-
-    @RequestMapping("/search")
-    public String blogList(Model model) {
-        return "search";
-    }
     @RequestMapping("/blog/add")
     String post(Model model, @ModelAttribute BlogRequest blogRequest) {
         service.create(blogRequest);
@@ -73,4 +68,18 @@ public class HomeController {
         service.deleteByIdBlog(blog);
         return "redirect:/index";
     }
+    @GetMapping("/search")
+    public String searchBlog(@RequestParam("search") String title,Model model){
+        List<Blog> blogs2 = service.partsSearch(title);
+       model.addAttribute("blogs", blogs2);
+        return "search";
+    }
+
+//    @RequestMapping("/search")
+//    public String blogList(Model model) {
+//        List<Blog> blogs = service.blogGetAll();
+//        model.addAttribute("blogs",blogs );
+//        service.search();
+//        return "search";
+//    }
 }
