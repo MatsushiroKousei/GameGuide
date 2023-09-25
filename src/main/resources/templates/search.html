@@ -72,6 +72,7 @@
             <h4 class="topposttittle"><p th:text="${blogs.get(0).title}"></p></h4>
             <div class="toppostcontents"><p th:text="${blogs.get(0).text}"></p></div>
             <a th:href="@{/blog/{id}(id=${blogs.get(0).id})}">この記事を読む</a>
+        </article>
 
 <!--        <article class="toppostitem" th:value="blog: ${title}">-->
 <!--            <span class="toppostid">@Matsushiro</span>-->

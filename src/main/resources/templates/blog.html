@@ -65,11 +65,6 @@
         <li><h4><p th:text="${blog.title}"></p></h4></li>
         <li class="author">@Matsushiro</li>
       </ul>
-      <div class="blog_update_btn"><button>更新</button>
-
-        <button ID="deleteblog"><a th:href="@{'/blog/delete/' + ${blog.id}}" >削除</a></button></button>
-      </div>
-
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           削除
         </button>      </div>
