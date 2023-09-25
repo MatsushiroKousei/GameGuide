@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ゲーム攻略記事</title>
-<!--  <link rel="stylesheet" href="css/sanitize.css">-->
-<!--  <link rel="stylesheet" href="css/mainstyle.css">-->
+  <link th:href="@{/mainstyle.css}" rel="stylesheet">
+  <link th:href="@{/sanitize.css}" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">
@@ -61,7 +61,7 @@
         <li class="author">@Matsushiro</li>
       </ul>
       <div class="blog_update_btn"><button>更新</button>
-        <a th:href="@{'/blog/delete/' + ${blog.id}}" >削除</a>
+        <button ID="deleteblog"><a th:href="@{'/blog/delete/' + ${blog.id}}" >削除</a></button></button>
       </div>
       <hr>
       <article class="toppostitem">
@@ -74,6 +74,7 @@
             <img src="/images/mv.jpg">
           </div>
           <div class="good_button">103<span>Good!</span><button>高評価する</button></div>
+        </div>
       </article>
     </div>
     <div class="pagination">
@@ -124,5 +125,42 @@
     </div>
     <div class="copyright">Copyright © Matsushiro Corporation All Rights Reserved.</div>
   </div>
+
+  <!-- デモ　start -->
+  <div id="postblogDialog">
+    <div class="dialog_wrap">
+      <div class="dialog_box">
+        <p class="dialog_header">記事を投稿しますか？</p>
+        <button type="submit">投稿</button>
+        <button type="reset"
+                onclick="getElementById('postblogDialog').style.display='none';">キャンセル</button>
+      </div>
+      <div class="dialog_box">
+        <div class="dialog_image">
+          <img src="/images/dialog_image.png">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" id="create_button" onclick="
+                let row = this.parentElement.parentElement;
+                var dialog = getElementById('postblogDialog')
+                dialog.style.left =((window.innerWidth -500) / 2) + 'px';
+                dialog.style.display = 'block';">実行</button>
+   <--デモ　end-->
+
+<!--  <script>-->
+<!--            document.getElementById("deleteblog").onclick = function () {-->
+<!--                let checkSaveFlg = window.confirm('ブログを削除してもよろしいですか？');-->
+
+<!--                if (checkSaveFlg) {-->
+<!--                    document.getElementById("postResult").textContent = "ブログを削除しました。";-->
+<!--                } else {-->
+<!--                    document.getElementById("postResult").textContent = "削除をキャンセルしました。";-->
+<!--                }-->
+<!--            };-->
+<!--        </script>-->
+
 </footer>
 </body>

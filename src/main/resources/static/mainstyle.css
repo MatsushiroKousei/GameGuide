@@ -547,20 +547,25 @@ ul.footer_nav li a {
 
 /*blog投稿ページ*/
 
-input[type="text"]{
-    padding: 0;
-    width: 800x;
-    line-height: 28px;
-    height: 30px;
-    background-color: #EFEFEF;
+.postblog_header {
+    background-color: #139c25;
+    color: #FFF;
+    width: 150px;
+    font-size: 25px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 10px 0px 10px;
+    border-radius: 0px 30px 30px 0px;
+    text-shadow: 1px 2px 3px #808080;
+    margin-left: -30px;
+    margin-bottom: 30px;
+    box-shadow: 1px 2px 3px #808080;
 }
 
-.textarea {
-    padding-top: 50px;
+
+input[type="text"] {
+    padding: 5px;
     width: 800x;
-    line-height: 28px;
-    height: 30px;
-    background-color: #EFEFEF;
 }
 
 .input_form {
@@ -587,4 +592,194 @@ input[type="text"]{
     margin-right: 0px;
     margin-bottom: 30px;
     box-shadow: 1px 2px 3px #808080;
+}
+
+.post_blog a {
+    text-decoration: none;
+}
+
+.post_blog:hover {
+    background-color: yellow;
+}
+
+.post_blog:active {
+    -webkit-transform: translate(0, 2px);
+    -moz-transform: translate(0, 2px);
+    transform: translate(0, 2px);
+    border-bottom: none;
+}
+
+.form_text {
+    padding: 10px;
+    background-color: #F7F7F7;
+}
+
+.form_textarea {
+    padding: 10px;
+    background-color: #F7F7F7;
+}
+
+/*モーダルウィンドウ*/
+#postblogDialog {
+    display: none;
+    background-color: #FFF;
+    /* border: 2px double; */
+    border: 1px solid;
+    width: 500px;
+    position: fixed;
+    padding: 20px 50px 20px 50px;
+    top: 120px;
+    border-radius: 10px;
+    /* z-index: 9999; */
+}
+
+.dialog_wrap {
+    display: flex;
+    /*コレ*/justify-content: space-between;
+}
+
+.dialog_header {
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+.dialog_image img {
+    max-width: 80px;
+    max-height: 150px;
+}
+
+/*上に戻るボタン*/
+
+.up_top {
+    color: #FFF;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    padding: 5px 4px 3px 4px;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #3584bb;
+    border-radius: 5px;
+    position: fixed;
+    bottom: 100px;
+    right: 50px;
+    display: inline-block;
+}
+
+.up_top a {
+    text-decoration: none;
+    color: #FFF;
+
+}
+
+/*ハンバーガーメニュー*/
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color: #3584bb;
+    border-radius: 5px;
+}
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+}
+.menu-btn span:before {
+    bottom: 8px;
+}
+.menu-btn span:after {
+    top: 8px;
+}
+
+
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+}
+#menu-btn-check:checked ~ .menu-btn span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+}
+#menu-btn-check:checked ~ .menu-btn span::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+
+#menu-btn-check {
+    display: none;
+}
+
+
+.menu-content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 80;
+    background-color: #3584bb;
+}
+.menu-content ul {
+    padding: 70px 10px 0;
+}
+.menu-content ul li {
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
+}
+.menu-content ul li a {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    box-sizing: border-box;
+    color:#ffffff;
+    text-decoration: none;
+    padding: 9px 15px 10px 0;
+    position: relative;
+}
+.menu-content ul li a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-top: solid 2px #ffffff;
+    border-right: solid 2px #ffffff;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 11px;
+    top: 16px;
+}
+
+.menu-content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 100%;/*leftの値を変更してメニューを画面外へ*/
+    z-index: 80;
+    background-color: #3584bb;
+    transition: all 0.5s;/*アニメーション設定*/
+}
+
+
+#menu-btn-check:checked ~ .menu-content {
+    left: 0;/*メニューを画面内へ*/
+}
+
+/*スマホ対応*/
+@media (max-width: 768px) {
+    .topmenu{
+        display: hidden;
+    }
 }
