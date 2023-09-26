@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ゲーム攻略記事</title>
   <link th:href="@{/mainstyle.css}" rel="stylesheet">
+  <link th:href="@{/sanitize.css}" rel="stylesheet">
   <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.2.2/css/bootstrap.min.css}"/>
   <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
   <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
@@ -64,7 +65,6 @@
         <li><h4><p th:text="${blog.title}"></p></h4></li>
         <li class="author">@Matsushiro</li>
       </ul>
-      <div class="blog_update_btn"><button>更新</button>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
           削除
         </button>      </div>
@@ -130,6 +130,41 @@
     </div>
     <div class="copyright">Copyright © Matsushiro Corporation All Rights Reserved.</div>
   </div>
+
+  <!-- デモ　start -->
+  <div id="postblogDialog">
+    <div class="dialog_wrap">
+      <div class="dialog_box">
+        <p class="dialog_header">記事を投稿しますか？</p>
+        <button type="submit">投稿</button>
+        <button type="reset"
+                onclick="getElementById('postblogDialog').style.display='none';">キャンセル</button>
+      </div>
+      <div class="dialog_box">
+        <div class="dialog_image">
+          <img src="/images/dialog_image.png">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" id="create_button" onclick="
+                let row = this.parentElement.parentElement;
+                var dialog = getElementById('postblogDialog')
+                dialog.style.left =((window.innerWidth -500) / 2) + 'px';
+                dialog.style.display = 'block';">実行</button>
+<!--  <script>-->
+<!--            document.getElementById("deleteblog").onclick = function () {-->
+<!--                let checkSaveFlg = window.confirm('ブログを削除してもよろしいですか？');-->
+
+<!--                if (checkSaveFlg) {-->
+<!--                    document.getElementById("postResult").textContent = "ブログを削除しました。";-->
+<!--                } else {-->
+<!--                    document.getElementById("postResult").textContent = "削除をキャンセルしました。";-->
+<!--                }-->
+<!--            };-->
+<!--        </script>-->
+
 </footer>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

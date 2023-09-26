@@ -66,13 +66,14 @@
 
         <p>デモ</p>
 
-        <article class="toppostitem"　style="display:none">
+        <article class="toppostitem">
             <span class="toppostid">@Matsushiro</span>
             <div class="toppostdate"><p th:text="${blogs.get(0).createdDate}"></p></div>
             <h4 class="topposttittle"><p th:text="${blogs.get(0).title}"></p></h4>
             <div class="toppostcontents"><p th:text="${blogs.get(0).text}"></p></div>
             <a th:href="@{/blog/{id}(id=${blogs.get(0).id})}">この記事を読む</a>
         </article>
+
 <!--        <article class="toppostitem" th:value="blog: ${title}">-->
 <!--            <span class="toppostid">@Matsushiro</span>-->
 <!--            <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>-->
@@ -81,10 +82,10 @@
 <!--            <div class="toppostbutton"><button><a th:href=@{/blog/"${blogs.id}"}>この記事を読む</a></button></div>-->
 <!--    </article>-->
 
-        <article class="toppostitem" style="display:none">
+        <article class="toppostitem">
             <span class="toppostid">@Matsushiro</span>
             <div class="toppostdate">2023年09月04日</div>
-            <h4 class="topposttittle">ここ</h4>
+            <h4 class="topposttittle">タイトルが表示</h4>
             <div class="toppostcontents">記事内容が100文字？が表示・・・</div>
             <div class="toppostbutton"><button>この記事を読む</button></div>
         </article>
