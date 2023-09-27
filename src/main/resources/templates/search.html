@@ -50,12 +50,12 @@
     <div class="topsearth">
 
         <form action="/search">
-<!--            <label>新着順</label><input type="radio" name="order" value="新着順" checked>-->
-<!--            <label>人気順</label><input type="radio" name="order" value="人気順">-->
+            <label>新着順</label><input type="radio" name="order" value="新着順" checked>
+            <label>人気順</label><input type="radio" name="order" value="人気順">
             <input type="text" id="search" name="search" size="20" /><button>検索</button>
-<!--            <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>-->
-<!--            <label>OR検索</label><input type="radio" name="keyword" value="OR">-->
-<!--            <label>NOT検索</label><input type="radio" name="keyword" value="NOT">-->
+            <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>
+            <label>OR検索</label><input type="radio" name="keyword" value="OR">
+            <label>NOT検索</label><input type="radio" name="keyword" value="NOT">
         </form>
 
     </div>
@@ -66,13 +66,21 @@
 
         <p>デモ</p>
 
-        <article class="toppostitem">
+        <article class="toppostitem" th:each="blogs: ${blogs}">
             <span class="toppostid">@Matsushiro</span>
-            <div class="toppostdate"><p th:text="${blogs.get(0).createdDate}"></p></div>
-            <h4 class="topposttittle"><p th:text="${blogs.get(0).title}"></p></h4>
-            <div class="toppostcontents"><p th:text="${blogs.get(0).text}"></p></div>
-            <a th:href="@{/blog/{id}(id=${blogs.get(0).id})}">この記事を読む</a>
+            <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>
+            <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
+            <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
+            <div class="toppostbutton"><button><a th:href="@{/blog/{id}(id=${blogs.id})}">この記事を読む</a></button></div>
         </article>
+
+<!--        <article class="toppostitem">-->
+<!--            <span class="toppostid">@Matsushiro</span>-->
+<!--            <div class="toppostdate"><p th:text="${blogs.get(0).createdDate}"></p></div>-->
+<!--            <h4 class="topposttittle"><p th:text="${blogs.get(0).title}"></p></h4>-->
+<!--            <div class="toppostcontents"><p th:text="${blogs.get(0).text}"></p></div>-->
+<!--            <a th:href="@{/blog/{id}(id=${blogs.get(0).id})}">この記事を読む</a>-->
+<!--        </article>-->
 
 <!--        <article class="toppostitem" th:value="blog: ${title}">-->
 <!--            <span class="toppostid">@Matsushiro</span>-->
@@ -185,5 +193,7 @@
         </div>
         <div class="copyright">Copyright © Matsushiro Corporation All Rights Reserved.</div>
     </div>
-</body>
 </footer>
+</body>
+
+</html>
