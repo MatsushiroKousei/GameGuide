@@ -74,7 +74,6 @@ public class HomeController {
        model.addAttribute("blogs", blogs2);
         return "search";
     }
-
 //    @RequestMapping("/search")
 //    public String blogList(Model model) {
 //        List<Blog> blogs = service.blogGetAll();
