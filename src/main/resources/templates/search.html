@@ -73,14 +73,13 @@
 <!--            <div class="toppostcontents"><p th:text="${blogs.get(0).text}"></p></div>-->
 <!--            <a th:href="@{/blog/{id}(id=${blogs.get(0).id})}">この記事を読む</a>-->
 <!--        </article>-->
-
+        <p th:text="${empty}"></p>
         <article class="toppostitem" th:each="blogs: ${blogs}">
             <span class="toppostid">@Matsushiro</span>
             <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>
             <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
             <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
-            <a th:href="@{/blog/{id}(id=${blogs.id})}">この記事を読む</a>
-        </article>
+            <div class="toppostbutton"><button><a th:href="@{/blog/{id}(id=${blogs.id})}">この記事を読む</a></button></div>        </article>
 <!--        デモstart-->
 
 <!--        <article class="toppostitem">-->
