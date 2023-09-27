@@ -65,9 +65,10 @@
         <li><h4><p th:text="${blog.title}"></p></h4></li>
         <li class="author">@Matsushiro</li>
       </ul>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          削除
-        </button>      </div>
+<!--        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--          削除-->
+<!--        </button>      </div>-->
+
       <hr>
       <article class="toppostitem">
         <!-- <span class="toppostid">@Matsushiro</span> -->
@@ -82,6 +83,30 @@
         </div>
       </article>
     </div>
+    <!-- デモ　start -->
+    <div id="postblogDialog">
+      <div class="dialog_wrap">
+        <div class="dialog_box">
+          <p class="dialog_header">記事を削除しますか？</p>
+          <button type="submit" onClick="this.form.submit();"><a th:href="@{'/blog/delete/' + ${blog.id}}" >削除</a></button>
+          <button type="reset"
+                  onclick="getElementById('postblogDialog').style.display='none';">キャンセル</button>
+        </div>
+        <div class="dialog_box">
+          <div class="dialog_image">
+            <img src="/images/dialog_image.png">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="delete_blog" id="deleteblog"
+         onclick="
+        let row = this.parentElement.parentElement;
+        var dialog = getElementById('postblogDialog')
+        dialog.style.left =((window.innerWidth -500) / 2) + 'px';
+        dialog.style.display = 'block';">記事の削除</div>
+    <!-- デモ　end -->
+
     <div class="pagination">
       前へ　１　２　３　・・・　最後へ
     </div>
@@ -131,15 +156,15 @@
     <div class="copyright">Copyright © Matsushiro Corporation All Rights Reserved.</div>
   </div>
 
-  <!-- デモ　start -->
-  <div id="postblogDialog">
-    <div class="dialog_wrap">
-      <div class="dialog_box">
-        <p class="dialog_header">記事を投稿しますか？</p>
-        <button type="submit">投稿</button>
-        <button type="reset"
-                onclick="getElementById('postblogDialog').style.display='none';">キャンセル</button>
-      </div>
+<!--  &lt;!&ndash; デモ　start &ndash;&gt;-->
+<!--  <div id="postblogDialog">-->
+<!--    <div class="dialog_wrap">-->
+<!--      <div class="dialog_box">-->
+<!--        <p class="dialog_header">記事を投稿しますか？</p>-->
+<!--        <button type="submit">投稿</button>-->
+<!--        <button type="reset"-->
+<!--                onclick="getElementById('postblogDialog').style.display='none';">キャンセル</button>-->
+<!--      </div>-->
       <div class="dialog_box">
         <div class="dialog_image">
           <img src="/images/dialog_image.png">
@@ -148,11 +173,11 @@
     </div>
   </div>
 
-  <button type="submit" id="create_button" onclick="
-                let row = this.parentElement.parentElement;
-                var dialog = getElementById('postblogDialog')
-                dialog.style.left =((window.innerWidth -500) / 2) + 'px';
-                dialog.style.display = 'block';">実行</button>
+<!--  <button type="submit" id="create_button" onclick="-->
+<!--                let row = this.parentElement.parentElement;-->
+<!--                var dialog = getElementById('postblogDialog')-->
+<!--                dialog.style.left =((window.innerWidth -500) / 2) + 'px';-->
+<!--                dialog.style.display = 'block';">実行</button>-->
 <!--  <script>-->
 <!--            document.getElementById("deleteblog").onclick = function () {-->
 <!--                let checkSaveFlg = window.confirm('ブログを削除してもよろしいですか？');-->
@@ -167,22 +192,22 @@
 
 </footer>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        本当に削除しますか？
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">いいえ</button>
-        <button type="button" class="btn btn-primary"><a th:href="@{'/blog/delete/' + ${blog.id}}" >はい</a></button>
-      </div>
-    </div>
-  </div>
-</div>
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        本当に削除しますか？-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">いいえ</button>-->
+<!--        <button type="button" class="btn btn-primary"><a th:href="@{'/blog/delete/' + ${blog.id}}" >はい</a></button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
 </body>
