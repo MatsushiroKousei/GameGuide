@@ -608,6 +608,38 @@ input[type="text"] {
     border-bottom: none;
 }
 
+.delete_blog {
+    background-color: #139c25;
+    color: #FFF;
+    /* width: 400px; */
+    background-position: right;
+    background-size: 400px;
+    font-size: 25px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 10px 0px 10px;
+    border-radius: 30px 30px 30px 30px;
+    text-shadow: 1px 2px 3px #808080;
+    margin-top: 50px;
+    margin-right: 0px;
+    margin-bottom: 30px;
+    box-shadow: 1px 2px 3px #808080;
+}
+
+.delete_blog a {
+    text-decoration: none;
+}
+
+.delete_blog:hover {
+    background-color: yellow;
+}
+
+.delete_blog:active {
+    -webkit-transform: translate(0, 2px);
+    -moz-transform: translate(0, 2px);
+    transform: translate(0, 2px);
+    border-bottom: none;
+}
 .form_text {
     padding: 10px;
     background-color: #F7F7F7;
