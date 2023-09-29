@@ -71,6 +71,8 @@ public class HomeController {
     @GetMapping("/search")
     public String searchBlog(@RequestParam("search") String title,Model model){
         List<Blog> blogs2 = service.partsSearch(title);
+
+
         if(blogs2.size()==0){
             model.addAttribute("empty","記事がありません。");
         }
