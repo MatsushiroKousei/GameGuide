@@ -1,7 +1,11 @@
 package jp.gihyo.projava.gameguide;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jp.gihyo.projava.gameguide.entity.Blog;
+import jp.gihyo.projava.gameguide.repository.BlogJdbcRepository;
 import jp.gihyo.projava.gameguide.repository.BlogRepository;
 import jp.gihyo.projava.gameguide.repository.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,9 @@ public class BlogService {
 
     @Autowired
     ImageRepository imageRepository;
+    @Autowired
+    EntityManager en;
+
 
     List<Blog> blogGetAll(){
        return blogRepository.findAll();
@@ -27,6 +34,16 @@ public class BlogService {
 
     public List<Blog> getBlogTop3() {return blogRepository.getBlogList();}
     public List<Blog> BlogDate() {return blogRepository.getDate();}
+    public List<Blog> find(String title) {
+        List<Blog> blogs = en.createQuery("from Blog where title = :title",Blog.class)
+                .setParameter("title", title)
+                .getResultList();
+        return blogs;
+    }
+    public List<Blog> pageBlog(int x,int y){
+        return en.createQuery("from Blog",Blog.class)
+                .setFirstResult(x).setMaxResults(y).getResultList();
+    }
 
 
     Blog getByIdBlog(Integer id) {return blogRepository.getByIdBlog(id);}

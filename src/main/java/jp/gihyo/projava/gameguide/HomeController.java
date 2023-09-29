@@ -2,8 +2,10 @@ package jp.gihyo.projava.gameguide;
 
 
 import jakarta.persistence.criteria.CriteriaBuilder;
+import jp.gihyo.projava.gameguide.domain.BlogDto;
 import jp.gihyo.projava.gameguide.entity.Blog;
 import jp.gihyo.projava.gameguide.repository.BlogRepository;
+import jp.gihyo.projava.gameguide.service.BlogJdbcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -17,26 +19,15 @@ import java.util.List;
 public class HomeController {
     @Autowired
     BlogService service;
+    @Autowired
+    BlogJdbcService blogService;
 
     @GetMapping("/index")
     String index(Model model) {
-        List<Blog> blogs = service.getBlogTop3();
-        Blog top1 = blogs.get(0);
-        Blog top2 = blogs.get(1);
-        Blog top3 = blogs.get(2);
-
-        List<Blog> blogs1 = service.BlogDate();
-        Blog Date1 = blogs1.get(0);
-        Blog Date2 = blogs1.get(1);
-        Blog Date3 = blogs1.get(2);
-
-        model.addAttribute("blogs", blogs);
-        model.addAttribute("top1", top1);
-        model.addAttribute("top2", top2);
-        model.addAttribute("top3", top3);
-        model.addAttribute("Date1", Date1);
-        model.addAttribute("Date2", Date2);
-        model.addAttribute("Date3", Date3);
+        List<BlogDto> topBlogs = blogService.findTop();
+        List<BlogDto> newBlogs = blogService.findNew();
+        model.addAttribute("topBlogs",topBlogs);
+        model.addAttribute("newBlogs",newBlogs);
 
         return "index";
     }
@@ -70,16 +61,8 @@ public class HomeController {
     }
     @GetMapping("/search")
     public String searchBlog(@RequestParam("search") String title,Model model){
-        List<Blog> blogs2 = service.partsSearch(title);
+        List<BlogDto> blogs2 = blogService.searchBlogs(title);
        model.addAttribute("blogs", blogs2);
         return "search";
     }
-
-//    @RequestMapping("/search")
-//    public String blogList(Model model) {
-//        List<Blog> blogs = service.blogGetAll();
-//        model.addAttribute("blogs",blogs );
-//        service.search();
-//        return "search";
-//    }
 }

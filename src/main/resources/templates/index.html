@@ -68,32 +68,12 @@
 
                 <h2>What's New</h2>
                 <hr>
-
-                <article class="toppostitem">
+                <article class="toppostitem" th:each=" newBlog : ${newBlogs}">
                     <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate"><p th:text="${Date1.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${Date1.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${Date1.text}"></p></div>
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${Date1.id}}" >
-                        この記事を読む</a></button></div>
-                </article>
-
-                <article class="toppostitem">
-                    <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate"><p th:text="${Date2.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${Date2.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${Date2.text}"></p></div>
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${Date2.id}}" >
-                        この記事を読む</a></button></div>
-                </article>
-
-
-                <article class="toppostitem">
-                    <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate"><p th:text="${Date3.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${Date3.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${Date3.text}"></p></div>
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${Date3.id}}" >
+                    <div class="toppostdate"><p th:text="${newBlog.createDate}"></p></div>
+                    <h4 class="topposttittle"><p th:text="${newBlog.title}"></p></h4>
+                    <div class="toppostcontents"><p th:text="${newBlog.text}"></p></div>
+                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${newBlog.id}}" >
                         この記事を読む</a></button></div>
                 </article>
             </div>
@@ -103,40 +83,17 @@
             </div>
 
             <div class="popularity">
-
                 <h2>人気の記事</h2>
                 <hr>
-
-                <article class="toppostitem">
+                <article class="toppostitem" th:each=" topBlog : ${topBlogs}">
                     <span class="toppostid">@Matsushiro</span>
-                    <!--                    <th:block th:if="${top1 != null}" th:utext="${top1}"></th:block>-->
-                    <div class="toppostdate"><p th:text="${top1.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${top1.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${top1.text}"></p></div>
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${top1.id}}" >
+                    <div class="toppostdate"><p th:text="${topBlog.createDate}"></p></div>
+                    <h4 class="topposttittle"><p th:text="${topBlog.title}"></p></h4>
+                    <div class="toppostcontents"><p th:text="${topBlog.text}"></p></div>
+                    <p th:text="'閲覧回数:' + ${topBlog.viewCount}"></p>
+                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${topBlog.id}}" >
                         この記事を読む</a></button></div>
                 </article>
-
-                <article class="toppostitem">
-                    <span class="toppostid">@Matsushiro</span>
-                    <!--                    <th:block th:if="${top2 != null}" th:utext="${top2}"></th:block>-->
-                    <div class="toppostdate"><p th:text="${top2.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${top2.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${top2.text}"></p></div>
-
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${top2.id}}" >
-                        この記事を読む</a></button></div>                </article>
-
-                <article class="toppostitem">
-                    <span class="toppostid">@Matsushiro</span>
-                    <!--                    <th:block th:if="${top3 != null}" th:utext="${top3}"></th:block>-->
-                    <div class="toppostdate"><p th:text="${top3.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${top3.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${top3.text}"></p></div>
-
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${top3.id}}" >
-                        この記事を読む</a></button></div>
-
             </div>
 
             <div class="pagination">
