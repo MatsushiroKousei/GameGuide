@@ -38,6 +38,7 @@ public class HomeController {
         model.addAttribute("Date2", Date2);
         model.addAttribute("Date3", Date3);
 
+        model.addAttribute("blogs", blogs);
         return "index";
     }
 
@@ -54,34 +55,51 @@ public class HomeController {
         count++;
         blog.setViewCount(count);
         model.addAttribute("blog", blog);
+        model.addAttribute("BlogId",id);
         service.save(blog);
         return "blog";
     }
+
     @RequestMapping("/blog/add")
     String post(Model model, @ModelAttribute BlogRequest blogRequest) {
         service.create(blogRequest);
         return "redirect:/index";
     }
+
     @GetMapping("/blog/delete/{id}")
     public String deleteBlog(@PathVariable Integer id, Model model) {
         Blog blog = service.getByIdBlog(id);
         service.deleteByIdBlog(blog);
         return "redirect:/index";
     }
+
     @GetMapping("/search")
-    public String searchBlog(@RequestParam("search") String title,Model model){
+    public String searchBlog(@RequestParam("search") String title, Model model) {
         List<Blog> blogs2 = service.partsSearch(title);
-        if(blogs2.size()==0){
-            model.addAttribute("empty","記事がありません。");
+
+
+        if (blogs2.size() == 0) {
+            model.addAttribute("empty", "記事がありません。");
         }
-       model.addAttribute("blogs", blogs2);
+        model.addAttribute("blogs", blogs2);
         return "search";
     }
-//    @RequestMapping("/search")
-//    public String blogList(Model model) {
-//        List<Blog> blogs = service.blogGetAll();
-//        model.addAttribute("blogs",blogs );
-//        service.search();
-//        return "search";
-//    }
+
+    @GetMapping("/good/{id}")
+    String goodBlog(Model model, @PathVariable("id") Integer id) {
+        Blog blog = service.getByIdBlog(id);
+        Integer Goodcount = 0;
+        try {
+
+            Goodcount = blog.getGoodCount();
+            Goodcount++;//Goodcount+=Goodcount+1;
+        } catch (NullPointerException e) {
+            Goodcount = 1;
+        }
+        blog.setGoodCount(Goodcount);
+        model.addAttribute("blog", blog);
+        service.save(blog);
+        System.out.println(Goodcount);
+        return "redirect:/blog/" + id;
+    }
 }
