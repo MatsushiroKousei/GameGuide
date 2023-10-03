@@ -79,6 +79,7 @@
             <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>
             <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
             <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
+            <div class="toppostcontents">閲覧回数 <span th:text="${blogs.viewCount}"></span></div>
             <div class="toppostbutton"><button><a th:href="@{/blog/{id}(id=${blogs.id})}">この記事を読む</a></button></div>        </article>
 <!--        デモstart-->
 

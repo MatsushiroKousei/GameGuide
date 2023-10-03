@@ -34,6 +34,9 @@ public class Blog { //DBに操作してもらうた為の情報（Entityクラ�
     @LastModifiedDate       //更新の際レコードが生成される
     private Date updatedDate;
 
+    @Column(name = "good_count")
+    private Integer goodCount;
+
 //    @OneToOne(mappedBy = "image",orphanRemoval=true)
 //    private Image image;
 }
