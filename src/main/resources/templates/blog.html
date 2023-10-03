@@ -79,7 +79,9 @@
           <div class="upload_imege">
             <img src="/images/mv.jpg">
           </div>
-          <div class="good_button">103<span>Good!</span><button>高評価する</button></div>
+<!--          <form action="/good/{id}">-->
+          <div class="good_button"><span th:text="${blog.goodCount}"></span><span>いいねを押そう！</span><button><a th:href="@{/good/{id}(id=${BlogId})}">いいね！</a></button></div>
+<!--          </form>-->
         </div>
       </article>
     </div>
