@@ -25,6 +25,15 @@
         <div class="mainheader">
             <h2 class="top">DRAGONQUEST 攻略</h2>
         </div>
+        <!-- <div class="topmenu">
+            <ul class="nav">
+                <li><a href="">home</a></li>
+                <li><a href="">about</a></li>
+                <li><a href="">items</a></li>
+                <li><a href="">news</a></li>
+                <li><a href="">contact</a></li>
+            </ul>
+        </div> -->
 
         <div class="topmenu">
             <nav id="g_navi">
@@ -56,17 +65,16 @@
     <div class="container">
 
         <p>デモ</p>
-
-        <article class="toppostitem" th:each=" blog : ${blogs}">
+        <p th:text="${empty}"></p>
+        <article class="toppostitem" th:each="blogs: ${blogs}">
             <span class="toppostid">@Matsushiro</span>
-            <div class="toppostdate"><p th:text="${blog.createDate}"></p></div>
-            <h4 class="topposttittle"><p th:text="${blog.title}"></p></h4>
-            <div class="toppostcontents"><p th:text="${blog.text}"></p></div>
-            <a th:href="@{/blog/{id}(id=${blog.id})}">この記事を読む</a>
-        </article>
+            <div class="toppostdate"><p th:text="${blogs.createDate}"></p></div>
+            <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
+            <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
+            <div class="toppostbutton"><button><a th:href="@{/blog/{id}(id=${blogs.id})}">この記事を読む</a></button></div>        </article>
 
         <div class="pagination">
-            前へ　１　２　３　・・・　最後へ
+            <a th:href="@{{page}?search={title}(page=${page},title=${title})}">次へ</a>
         </div>
 
         <!-- </div>   -->
@@ -96,5 +104,6 @@
         </div>
         <div class="copyright">Copyright © Matsushiro Corporation All Rights Reserved.</div>
     </div>
-</body>
 </footer>
+</body>
+</html>

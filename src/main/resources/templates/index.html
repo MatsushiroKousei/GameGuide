@@ -51,7 +51,7 @@
         </head>
         <div class="topsearth">
 
-            <form action="/search">
+            <form action="/search/0">
 <!--                <label>新着順</label><input type="radio" name="order" value="新着順" checked>-->
 <!--                <label>人気順</label><input type="radio" name="order" value="人気順">-->
                 <input type="text" id="search" name="search" size="20" /><button>検索</button>
@@ -68,14 +68,17 @@
 
                 <h2>What's New</h2>
                 <hr>
-                <article class="toppostitem" th:each=" newBlog : ${newBlogs}">
+
+                <article class="toppostitem" th:each=" blog : ${newBlogs}">
                     <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate"><p th:text="${newBlog.createDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${newBlog.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${newBlog.text}"></p></div>
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${newBlog.id}}" >
+                    <div class="toppostdate"><p th:text="${blog.createDate}"></p></div>
+                    <h4 class="topposttittle"><p th:text="${blog.title}"></p></h4>
+                    <div class="toppostcontents"><p th:text="${blog.text}"></p></div>
+                    <p th:text="${blog.viewCount}"></p>
+                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${blog.id}}" >
                         この記事を読む</a></button></div>
                 </article>
+
             </div>
 
             <div class="pagination">
@@ -83,17 +86,21 @@
             </div>
 
             <div class="popularity">
+
                 <h2>人気の記事</h2>
                 <hr>
-                <article class="toppostitem" th:each=" topBlog : ${topBlogs}">
+
+                <article class="toppostitem" th:each=" blog : ${topBlogs}">
                     <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate"><p th:text="${topBlog.createDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${topBlog.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${topBlog.text}"></p></div>
-                    <p th:text="'閲覧回数:' + ${topBlog.viewCount}"></p>
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${topBlog.id}}" >
+                    <div class="toppostdate"><p th:text="${blog.createDate}"></p></div>
+                    <h4 class="topposttittle"><p th:text="${blog.title}"></p></h4>
+                    <div class="toppostcontents"><p th:text="${blog.text}"></p></div>
+                    <p th:text="${blog.viewCount}"></p>
+                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${blog.id}}" >
                         この記事を読む</a></button></div>
                 </article>
+
+
             </div>
 
             <div class="pagination">

@@ -29,6 +29,10 @@ public class BlogJdbcService {
         List<Map<String,Object>> getList = repository.findSearch(title);
         return createBlog(getList);
     }
+    public List<BlogDto> searchPage(String title,String offset){
+        List<Map<String,Object>> getList = repository.findPageSearch(title,offset);
+        return createBlog(getList);
+    }
 
     private List<BlogDto> createBlog(List<Map<String,Object>> getList){
         List<BlogDto> blogs = new ArrayList<>();

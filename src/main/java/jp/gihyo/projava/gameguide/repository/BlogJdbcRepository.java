@@ -26,7 +26,7 @@ public class BlogJdbcRepository {
      */
     public List<Map<String,Object>> findNew3(){
         String query ="SELECT id, title, text, created_date, view_count " +
-                "FROM blog ORDER BY created_date ASC LIMIT 3";
+                "FROM blog ORDER BY created_date DESC LIMIT 3";
         return jd.queryForList(query);
     }
     /**
@@ -35,6 +35,11 @@ public class BlogJdbcRepository {
     public List<Map<String,Object>> findSearch(String title){
         String query = "SELECT id, title, text, created_date, view_count " +
                 "FROM blog WHERE title like '%" + title + "%'";
+        return jd.queryForList(query);
+    }
+    public List<Map<String,Object>> findPageSearch(String title,String offset){
+        String query = "SELECT id, title, text, created_date, view_count " +
+                "FROM blog WHERE title like '%" + title + "%' LIMIT 5 OFFSET " + offset;
         return jd.queryForList(query);
     }
 }
