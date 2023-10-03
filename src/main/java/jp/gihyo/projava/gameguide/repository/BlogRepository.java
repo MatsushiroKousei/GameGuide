@@ -23,5 +23,4 @@ BlogRepository extends JpaRepository<Blog,Integer> { //entityを元にDBを操�
     List<Blog> partsSearch(@Param("title")String name);
 
 
-
 }

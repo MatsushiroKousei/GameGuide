@@ -68,15 +68,15 @@ public class HomeController {
         service.deleteByIdBlog(blog);
         return "redirect:/index";
     }
-    @GetMapping("/search")
-    public String searchBlog(@RequestParam("search") String title,Model model){
-        List<Blog> blogs2 = service.partsSearch(title);
-        if(blogs2.size()==0){
-            model.addAttribute("empty","記事がありません。");
-        }
-       model.addAttribute("blogs", blogs2);
-        return "search";
-    }
+//    @GetMapping("/search")
+//    public String searchBlog(@RequestParam("search") String title,Model model){
+//        List<Blog> blogs2 = service.partsSearch(title);
+//        if(blogs2.size()==0){
+//            model.addAttribute("empty","記事がありません。");
+//        }
+//       model.addAttribute("blogs", blogs2);
+//        return "search";
+//    }
 //    @RequestMapping("/search")
 //    public String blogList(Model model) {
 //        List<Blog> blogs = service.blogGetAll();

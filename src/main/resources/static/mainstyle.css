@@ -814,3 +814,23 @@ input[type="text"] {
         display: hidden;
     }
 }
+
+/*ページング*/
+.paging {
+text-align: center;
+margin: 15px 0px;
+font-size: 1rem;
+list-style-type: none
+}
+
+.paging li {
+display: inline-block;
+}
+
+.paging .current, .paging a {
+padding: 0px 3px;
+}
+
+.paging a {
+display: block;
+}
