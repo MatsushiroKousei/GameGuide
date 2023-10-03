@@ -47,6 +47,7 @@ public class BlogService {
         blog.setText(blogRequest.getContents());
         blog.setTitle(blogRequest.getTitle());
         blog.setViewCount(0);
+        blog.setGoodCount(0);
         blog.setCreatedDate(new Date());
         return blog;
     }
