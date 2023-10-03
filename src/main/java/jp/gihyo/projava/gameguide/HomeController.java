@@ -38,6 +38,7 @@ public class HomeController {
         model.addAttribute("Date2", Date2);
         model.addAttribute("Date3", Date3);
 
+        model.addAttribute("blogs", blogs);
         return "index";
     }
 
@@ -93,7 +94,7 @@ public class HomeController {
             Goodcount = blog.getGoodCount();
             Goodcount++;//Goodcount+=Goodcount+1;
         } catch (NullPointerException e) {
-            Goodcount = 0;
+            Goodcount = 1;
         }
         blog.setGoodCount(Goodcount);
         model.addAttribute("blog", blog);
