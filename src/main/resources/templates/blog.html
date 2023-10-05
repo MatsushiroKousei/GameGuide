@@ -77,7 +77,7 @@
           <p th:text="${blog.text}"></p>
 
           <div class="upload_imege">
-            <img src="/images/mv.jpg">
+            <img src="/images/test.png" width="100%">
           </div>
 <!--          <form action="/good/{id}">-->
           <div class="good_button"><span th:text="${blog.goodCount}"></span><span>いいねを押そう！</span><button><a th:href="@{/good/{id}(id=${BlogId})}">いいね！</a></button></div>
@@ -89,14 +89,14 @@
     <div id="postblogDialog">
       <div class="dialog_wrap">
         <div class="dialog_box">
-          <p class="dialog_header">記事を削除しますか？</p>
-          <button type="submit" onClick="this.form.submit();"><a th:href="@{'/blog/delete/' + ${blog.id}}" >削除</a></button>
+          <p class="dialog_header">記事を削除していいのね？</p>
+          <button type="submit" onClick="this.form.submit();"><a th:href="@{'/blog/delete/' + ${blog.id}}" >はい</a></button>
           <button type="reset"
-                  onclick="getElementById('postblogDialog').style.display='none';">キャンセル</button>
+                  onclick="getElementById('postblogDialog').style.display='none';">いいえ</button>
         </div>
         <div class="dialog_box">
           <div class="dialog_image">
-            <img src="/images/dialog_image.png">
+            <img src="/images/anlucia.jpg">
           </div>
         </div>
       </div>

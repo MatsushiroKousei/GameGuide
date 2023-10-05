@@ -33,7 +33,7 @@ body {
 
 .mainheader {
     width: 100vw;
-    background-image: url(../images/mv.jpg);
+    background-image: url(../images/dqxtitle.png);
     background-repeat: no-repeat;
     background-color: #999;
     background-position: center;
@@ -270,9 +270,10 @@ ul.footer_nav li a {
     padding-top: 30px;
     padding-left: 100px;
     text-shadow: 2px 2px 4px gray;
-    background-image: url(../images/slime1.jpg);
+    background-image: url(../images/slimedqx.webp);
     background-repeat: no-repeat;
-    background-position: 0 5px;
+   background-position:33px 14px;
+       background-size:50px;
 }
 
 .popularity h2 {
@@ -281,9 +282,10 @@ ul.footer_nav li a {
     padding-top: 30px;
     padding-left: 100px;
     text-shadow: 2px 2px 4px gray;
-    background-image: url(../images/slime1.jpg);
+    background-image: url(../images/slimedqx.webp);
     background-repeat: no-repeat;
-    background-position: 0 5px;
+    background-position:33px 14px;
+    background-size:50px;
 }
 
 
@@ -456,9 +458,10 @@ ul.footer_nav li a {
     padding-top: 30px;
     padding-left: 100px;
     text-shadow: 2px 2px 4px gray;
-    background-image: url(../images/slime1.jpg);
+    background-image: url(../images/slimedqx.webp);
     background-repeat: no-repeat;
-    background-position: 0 5px;
+background-position:33px 14px;
+    background-size:50px;
 }
 
 .top_post_comment:before {
