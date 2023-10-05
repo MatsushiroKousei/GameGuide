@@ -41,6 +41,7 @@ body {
     height: 350px;
     line-height: 350px;
     text-align: center;
+    line-height: 15;
     box-sizing: border-box;
     margin-left: calc(-50vw + 50%);
     margin-top: 0;
@@ -98,7 +99,7 @@ ul.nav li:hover {
 
 h2.top {
     font-size: 40px;
-    color: #FFF;
+    color: #000;
     margin: 0;
 }
 
