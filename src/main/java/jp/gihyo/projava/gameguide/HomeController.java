@@ -23,6 +23,7 @@ public class HomeController {
         List<Blog> blogs = service.getBlogTop3();
         List<Blog> blogs1 = service.BlogDate();
         model.addAttribute("blogs", blogs);
+        model.addAttribute("blogsDate", blogs1);
         return "index";
     }
 
