@@ -23,5 +23,4 @@ BlogRepository extends JpaRepository<Blog,Integer> { //entityを元にDBを操�
     @Query("SELECT m FROM Blog m WHERE m.title LIKE %:title" + "%")
     List<Blog> partsSearch(@Param("title")String name);
 
-
 }
