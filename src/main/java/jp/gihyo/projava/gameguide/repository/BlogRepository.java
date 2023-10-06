@@ -23,4 +23,9 @@ BlogRepository extends JpaRepository<Blog,Integer> { //entityを元にDBを操�
     @Query("SELECT m FROM Blog m WHERE m.title LIKE %:title" + "%")
     List<Blog> partsSearch(@Param("title")String name);
 
+    @Query(value = "UPDATE blog SET text=:text,title=:title WHERE blog.id = :id",nativeQuery = true)
+    Blog upDateBlog(@Param("text")String text,@Param("title")String title,
+                    @Param("id")Integer id);
+    //変数を入れたい所には : の後に変数をつけ@Paramで置き換える感じ
+
 }

@@ -87,4 +87,13 @@ public class HomeController {
         System.out.println(Goodcount);
         return "redirect:/blog/" + id;
     }
+    @GetMapping("/update/{id}")
+    String blogUpdate(@PathVariable("id")Integer id, Model model){
+        Blog blog = service.getByIdBlog(id);
+        BlogRequest br = new BlogRequest();
+        br.setTitle(blog.getTitle());
+        br.setContents(blog.getText());
+        model.addAttribute("blogRequest",br);
+        return "postblog";
+    }
 }

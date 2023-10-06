@@ -107,6 +107,10 @@
         var dialog = getElementById('postblogDialog')
         dialog.style.left =((window.innerWidth -500) / 2) + 'px';
         dialog.style.display = 'block';">記事の削除</div>
+
+    <div class="update_button"><span th:text="${blog.updatedDate}"></span><button><a th:href="@{/update/{id}(id=${blog.id})}">更新</a></button></div>
+
+    <form></form>
     <!-- デモ　end -->
 
     <div class="pagination">

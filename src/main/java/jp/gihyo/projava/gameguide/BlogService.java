@@ -28,15 +28,15 @@ public class BlogService {
     public List<Blog> getBlogTop3() {return blogRepository.getBlogList();}
     public List<Blog> BlogDate() {return blogRepository.getDate();}
 
-
     Blog getByIdBlog(Integer id) {return blogRepository.getByIdBlog(id);}
 
     public void save(Blog con) {blogRepository.save(con);}
 
     public void deleteByIdBlog(Blog id) {blogRepository.delete(id);}
 
-    public List<Blog> partsSearch(String title) {return blogRepository.partsSearch(title);}
+    public void blogUpdate(String text, String title , Integer id) {blogRepository.upDateBlog(text,title,id);}
 
+    public List<Blog> partsSearch(String title) {return blogRepository.partsSearch(title);}
     /**
      * Creaateはリクエストを受け取ってentityクラスをセットして返す
      *
