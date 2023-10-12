@@ -24,7 +24,6 @@ public class BlogService {
     public void create(BlogRequest blogRequest) {
         blogRepository.save(CreateBlog(blogRequest));
     }
-
     public List<Blog> getBlogTop3() {return blogRepository.getBlogList();}
     public List<Blog> BlogDate() {return blogRepository.getDate();}
 
@@ -34,7 +33,7 @@ public class BlogService {
 
     public void deleteByIdBlog(Blog id) {blogRepository.delete(id);}
 
-    public void blogUpdate(String text, String title , Integer id) {blogRepository.upDateBlog(text,title,id);}
+    public void blogUpdate(String text, String title, Integer id) {blogRepository.upDateBlog(text,title,id);}
 
     public List<Blog> partsSearch(String title) {return blogRepository.partsSearch(title);}
     /**
@@ -43,7 +42,6 @@ public class BlogService {
      */
     private Blog CreateBlog(BlogRequest blogRequest){
         Blog blog = new Blog();
-
         blog.setText(blogRequest.getContents());
         blog.setTitle(blogRequest.getTitle());
         blog.setViewCount(0);

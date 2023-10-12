@@ -4,7 +4,10 @@ package jp.gihyo.projava.gameguide;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jp.gihyo.projava.gameguide.entity.Blog;
 import jp.gihyo.projava.gameguide.repository.BlogRepository;
+import org.apache.coyote.Request;
+import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
@@ -12,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.parser.Entity;
 import java.util.List;
+
+import static java.awt.SystemColor.info;
+import static java.awt.SystemColor.text;
 
 @Controller
 public class HomeController {
@@ -40,7 +46,7 @@ public class HomeController {
         count++;
         blog.setViewCount(count);
         model.addAttribute("blog", blog);
-        model.addAttribute("BlogId",id);
+        model.addAttribute("BlogId", id);
         service.save(blog);
         return "blog";
     }
@@ -52,7 +58,7 @@ public class HomeController {
     }
 
     @GetMapping("/blog/delete/{id}")
-    public String deleteBlog(@PathVariable Integer id, Model model) {
+    public String deleteBlog(@PathVariable Integer id) {
         Blog blog = service.getByIdBlog(id);
         service.deleteByIdBlog(blog);
         return "redirect:/index";
@@ -84,16 +90,43 @@ public class HomeController {
         blog.setGoodCount(Goodcount);
         model.addAttribute("blog", blog);
         service.save(blog);
-        System.out.println(Goodcount);
+        System.out.println(Goodcount);//確認の為の記述
         return "redirect:/blog/" + id;
     }
+
     @GetMapping("/update/{id}")
-    String blogUpdate(@PathVariable("id")Integer id, Model model){
+    String GetUpdate(@PathVariable("id") Integer id, Model model) {
         Blog blog = service.getByIdBlog(id);
         BlogRequest br = new BlogRequest();
         br.setTitle(blog.getTitle());
         br.setContents(blog.getText());
-        model.addAttribute("blogRequest",br);
-        return "postblog";
+        br.setId(id);
+        model.addAttribute("blogRequest", br);
+        return "edit";
     }
+//    @GetMapping("/blog/edited/{id}")
+//    String SetUpdate(Model model, @ModelAttribute String text, String title, Integer id){
+//        Blog blog = service.getByIdBlog(id);
+//        service.blogUpdate(text,title,id);
+//        BlogRequest updt = new BlogRequest();
+//        updt.setTitle(title);
+//        updt.setContents(text);
+//        updt.setId(id);
+//        model.addAttribute("updtblg", updt);
+//        return "index";
+//    }
+
+        @PostMapping("/blog/edit")
+    public String editBlog(@ModelAttribute BlogRequest request) {
+        Blog blog = service.getByIdBlog(request.getId());
+        blog.setTitle(request.getTitle());
+        blog.setText(request.getContents());
+        service.save(blog);
+                return "redirect:/index";
+    }
+//    @RequestMapping("/blog/edidi")
+//    String edited(Model model, @ModelAttribute BlogRequest Request) {
+//        service.create(Request);
+//        return "index";
+//    }
 }
