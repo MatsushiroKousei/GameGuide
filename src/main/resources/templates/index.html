@@ -39,12 +39,13 @@
                 <nav id="g_navi">
                     <ul>
                         <li><a href="/index">ホーム</a></li>
-                        <LI><a href="/postblog">投稿する</a>
-                        </LI>
+                        <LI><a href="/postblog">投稿する</a></LI>
                         <li><a href="/concept">コンセプト</a></li>
                         <li><a href="/menu">メニュー</a></li>
                         <li><a href="/access">アクセス</a></li>
                         <li><a href="/contact">お問い合わせ</a></li>
+                        <li><a href="https://hiroba.dqx.jp/sc/">冒険者の広場</a></li>
+
                     </ul>
                 </nav>
             </div>
@@ -69,78 +70,97 @@
                 <h2>What's New</h2>
                 <hr>
 
-                <article class="toppostitem">
+                <article class="toppostitem" th:each="blogs: ${blogsDate}">
                     <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate"><p th:text="${Date1.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${Date1.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${Date1.text}"></p></div>
-                    <div class="toppostcontents">閲覧回数 <span th:text="${Date1.viewCount}"></span></div>
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${Date1.id}}" >
+                    <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>
+                    <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
+                    <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
+                    <div class="toppostcontents">閲覧回数 <span th:text="${blogs.viewCount}"></span></div>
+                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${blogs.id}}" >
                         この記事を読む</a></button></div>
                 </article>
 
-                <article class="toppostitem">
-                    <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate"><p th:text="${Date2.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${Date2.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${Date2.text}"></p></div>
-                    <div class="toppostcontents">閲覧回数 <span th:text="${Date2.viewCount}"></span></div>
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${Date2.id}}" >
-                        この記事を読む</a></button></div>
-                </article>
+<!--                <article class="toppostitem">-->
+<!--                    <span class="toppostid">@Matsushiro</span>-->
+<!--                    <div class="toppostdate"><p th:text="${Date1.createdDate}"></p></div>-->
+<!--                    <h4 class="topposttittle"><p th:text="${Date1.title}"></p></h4>-->
+<!--                    <div class="toppostcontents"><p th:text="${Date1.text}"></p></div>-->
+<!--                    <div class="toppostcontents">閲覧回数 <span th:text="${Date1.viewCount}"></span></div>-->
+<!--                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${Date1.id}}" >-->
+<!--                        この記事を読む</a></button></div>-->
+<!--                </article>-->
+
+<!--                <article class="toppostitem">-->
+<!--                    <span class="toppostid">@Matsushiro</span>-->
+<!--                    <div class="toppostdate"><p th:text="${Date2.createdDate}"></p></div>-->
+<!--                    <h4 class="topposttittle"><p th:text="${Date2.title}"></p></h4>-->
+<!--                    <div class="toppostcontents"><p th:text="${Date2.text}"></p></div>-->
+<!--                    <div class="toppostcontents">閲覧回数 <span th:text="${Date2.viewCount}"></span></div>-->
+<!--                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${Date2.id}}" >-->
+<!--                        この記事を読む</a></button></div>-->
+<!--                </article>-->
 
 
-                <article class="toppostitem">
-                    <span class="toppostid">@Matsushiro</span>
-                    <div class="toppostdate"><p th:text="${Date3.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${Date3.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${Date3.text}"></p></div>
-                    <div class="toppostcontents">閲覧回数 <span th:text="${Date3.viewCount}"></span></div>
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${Date3.id}}" >
-                        この記事を読む</a></button></div>
-                </article>
-            </div>
+<!--                <article class="toppostitem">-->
+<!--                    <span class="toppostid">@Matsushiro</span>-->
+<!--                    <div class="toppostdate"><p th:text="${Date3.createdDate}"></p></div>-->
+<!--                    <h4 class="topposttittle"><p th:text="${Date3.title}"></p></h4>-->
+<!--                    <div class="toppostcontents"><p th:text="${Date3.text}"></p></div>-->
+<!--                    <div class="toppostcontents">閲覧回数 <span th:text="${Date3.viewCount}"></span></div>-->
+<!--                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${Date3.id}}" >-->
+<!--                        この記事を読む</a></button></div>-->
+<!--                </article>-->
+<!--            </div>-->
 
             <div class="pagination">
                 前へ　１　２　３　・・・　最後へ
             </div>
 
             <div class="popularity">
-
+<!---->
                 <h2>人気の記事</h2>
                 <hr>
 
-                <article class="toppostitem">
+                <article class="toppostitem" th:each="blogs: ${blogs}">
                     <span class="toppostid">@Matsushiro</span>
-                    <!--                    <th:block th:if="${top1 != null}" th:utext="${top1}"></th:block>-->
-                    <div class="toppostdate"><p th:text="${top1.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${top1.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${top1.text}"></p></div>
-                    <div class="toppostcontents">閲覧数 <span th:text="${top1.viewCount}"></span></div>
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${top1.id}}" >
+                    <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>
+                    <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
+                    <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
+                    <div class="toppostcontents">閲覧回数 <span th:text="${blogs.viewCount}"></span></div>
+                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${blogs.id}}" >
                         この記事を読む</a></button></div>
                 </article>
+<!--                <article class="toppostitem">-->
+<!--                    <span class="toppostid">@Matsushiro</span>-->
+<!--                    &lt;!&ndash;                    <th:block th:if="${top1 != null}" th:utext="${top1}"></th:block>&ndash;&gt;-->
+<!--                    <div class="toppostdate"><p th:text="${top1.createdDate}"></p></div>-->
+<!--                    <h4 class="topposttittle"><p th:text="${top1.title}"></p></h4>-->
+<!--                    <div class="toppostcontents"><p th:text="${top1.text}"></p></div>-->
+<!--                    <div class="toppostcontents">閲覧数 <span th:text="${top1.viewCount}"></span></div>-->
+<!--                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${top1.id}}" >-->
+<!--                        この記事を読む</a></button></div>-->
+<!--                </article>-->
 
-                <article class="toppostitem">
-                    <span class="toppostid">@Matsushiro</span>
-                    <!--                    <th:block th:if="${top2 != null}" th:utext="${top2}"></th:block>-->
-                    <div class="toppostdate"><p th:text="${top2.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${top2.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${top2.text}"></p></div>
-                    <div class="toppostcontents">閲覧数 <span th:text="${top2.viewCount}"></span></div>
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${top2.id}}" >
-                        この記事を読む</a></button></div>                </article>
+<!--                <article class="toppostitem">-->
+<!--                    <span class="toppostid">@Matsushiro</span>-->
+<!--                    &lt;!&ndash;                    <th:block th:if="${top2 != null}" th:utext="${top2}"></th:block>&ndash;&gt;-->
+<!--                    <div class="toppostdate"><p th:text="${top2.createdDate}"></p></div>-->
+<!--                    <h4 class="topposttittle"><p th:text="${top2.title}"></p></h4>-->
+<!--                    <div class="toppostcontents"><p th:text="${top2.text}"></p></div>-->
+<!--                    <div class="toppostcontents">閲覧数 <span th:text="${top2.viewCount}"></span></div>-->
+<!--                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${top2.id}}" >-->
+<!--                        この記事を読む</a></button></div>                </article>-->
 
-                <article class="toppostitem">
-                    <span class="toppostid">@Matsushiro</span>
-                    <!--                    <th:block th:if="${top3 != null}" th:utext="${top3}"></th:block>-->
-                    <div class="toppostdate"><p th:text="${top3.createdDate}"></p></div>
-                    <h4 class="topposttittle"><p th:text="${top3.title}"></p></h4>
-                    <div class="toppostcontents"><p th:text="${top3.text}"></p></div>
-                    <div class="toppostcontents">閲覧回数 <span th:text="${top3.viewCount}"></span></div>
+<!--                <article class="toppostitem">-->
+<!--                    <span class="toppostid">@Matsushiro</span>-->
+<!--                    &lt;!&ndash;                    <th:block th:if="${top3 != null}" th:utext="${top3}"></th:block>&ndash;&gt;-->
+<!--                    <div class="toppostdate"><p th:text="${top3.createdDate}"></p></div>-->
+<!--                    <h4 class="topposttittle"><p th:text="${top3.title}"></p></h4>-->
+<!--                    <div class="toppostcontents"><p th:text="${top3.text}"></p></div>-->
+<!--                    <div class="toppostcontents">閲覧回数 <span th:text="${top3.viewCount}"></span></div>-->
 
-                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${top3.id}}" >
-                        この記事を読む</a></button></div>  </article>
+<!--                    <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${top3.id}}" >-->
+<!--                        この記事を読む</a></button></div>  </article>-->
             </div>
 
             <div class="pagination">
@@ -175,4 +195,6 @@
             <div class="copyright">Copyright © Matsushiro Corporation All Rights Reserved.</div>
         </div>
     </footer>
+    </div>
 </body>
+</html>
