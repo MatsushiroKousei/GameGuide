@@ -10,11 +10,12 @@ import java.util.List;
 public interface
 
 BlogRepository extends JpaRepository<Blog,Integer> { //entityを元にDBを操作
-    @Query("SELECT m FROM Blog m order by m.viewCount desc")
-    List<Blog> getBlogList();
 
-    @Query("SELECT m FROM Blog m order by m.createdDate desc")
-    List<Blog> getDate();
+    @Query(value = "SELECT * FROM blog ORDER BY created_date DESC LIMIT 3",nativeQuery = true)
+    List<Blog>getDate();
+
+    @Query(value = "SELECT * FROM blog ORDER BY view_count DESC LIMIT 3",nativeQuery = true)
+    List<Blog>getBlogList();
 
     @Query(value = "SELECT m FROM Blog m WHERE m.id = :id")
     Blog getByIdBlog(@Param("id")Integer id);
@@ -22,6 +23,9 @@ BlogRepository extends JpaRepository<Blog,Integer> { //entityを元にDBを操�
     @Query("SELECT m FROM Blog m WHERE m.title LIKE %:title" + "%")
     List<Blog> partsSearch(@Param("title")String name);
 
-
+    @Query(value = "UPDATE blog SET text=:text,title=:title WHERE blog.id = :id",nativeQuery = true)
+    Blog upDateBlog(@Param("text")String text,@Param("title")String title,
+                    @Param("id")Integer id);
+    //変数を入れたい所には : の後に変数をつけ@Paramで置き換える感じ
 
 }
