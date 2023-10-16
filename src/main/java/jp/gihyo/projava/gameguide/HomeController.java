@@ -112,5 +112,4 @@ public class HomeController {
         service.save(blog);
                 return "redirect:/index";
     }
-
 }
