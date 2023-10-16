@@ -26,14 +26,14 @@ public class HomeController {
 
     @GetMapping("/index")
     String index(Model model) {
-        List<Blog> blogs = service.getBlogTop3();
-        List<Blog> blogs1 = service.BlogDate();
-        model.addAttribute("blogs", blogs);
-        model.addAttribute("blogsDate", blogs1);
-        return "index";
+        List<Blog> blogs = service.getBlogTop3();            //serviceクラスのgetBlogTop3()が呼び出される
+        List<Blog> blogs1 = service.BlogDate();             //serviceクラスのBlogDate()が呼び出される
+        model.addAttribute("blogs", blogs);     //List<Blog> blogs が"blogs"としてhtmlで扱えるようになる
+        model.addAttribute("blogsDate", blogs1);//List<Blog> blogs1が"blogs1"としてhtmlで扱えるようになる
+        return "index"; //ホームページ
     }
 
-    @GetMapping("/postblog")
+    @GetMapping("/postblog")//
     String postBlog(Model model) {
         model.addAttribute("blogRequest", new BlogRequest());
         return "postblog";
@@ -104,18 +104,6 @@ public class HomeController {
         model.addAttribute("blogRequest", br);
         return "edit";
     }
-//    @GetMapping("/blog/edited/{id}")
-//    String SetUpdate(Model model, @ModelAttribute String text, String title, Integer id){
-//        Blog blog = service.getByIdBlog(id);
-//        service.blogUpdate(text,title,id);
-//        BlogRequest updt = new BlogRequest();
-//        updt.setTitle(title);
-//        updt.setContents(text);
-//        updt.setId(id);
-//        model.addAttribute("updtblg", updt);
-//        return "index";
-//    }
-
         @PostMapping("/blog/edit")
     public String editBlog(@ModelAttribute BlogRequest request) {
         Blog blog = service.getByIdBlog(request.getId());
@@ -124,9 +112,4 @@ public class HomeController {
         service.save(blog);
                 return "redirect:/index";
     }
-//    @RequestMapping("/blog/edidi")
-//    String edited(Model model, @ModelAttribute BlogRequest Request) {
-//        service.create(Request);
-//        return "index";
-//    }
 }
