@@ -35,6 +35,10 @@ public class HomeController {
 
     @GetMapping("/postblog")//
     String postBlog(Model model) {
+
+        if (model == null) {
+            model.addAttribute("empty", "内容がないよう。");
+        }
         model.addAttribute("blogRequest", new BlogRequest());
         return "postblog";
     }
