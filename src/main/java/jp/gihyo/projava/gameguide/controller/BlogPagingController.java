@@ -57,6 +57,8 @@ public class BlogPagingController {
         //検索結果を保存するための JavaBeans(リスト）を用意
         List<Blog> itemList = pageList.getContent();
 
+
+
         //商品情報をリクエストスコープに保存
         model.addAttribute("title", title);
         model.addAttribute("pages", pageList);
