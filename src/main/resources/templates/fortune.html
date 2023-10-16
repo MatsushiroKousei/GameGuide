@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thimeleaf.org">
+  <html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>日の運勢</title>
+  </head>
+  <body>
+    <h1>占い結果</h1>
+    <span>今日のあなたの運勢は・・・</span>
+    <span th:text="${fr}"></span>
+    <div class="image">
+
+      <img th:src="@{images/{fn3}.jpg (fn3=${fn3})}">
+
+    </div>
+    <p th:text="${cr}"></p>
+    <script>
+            let btnBack = document.getElementById('btnBack');
+            btnBack.addEventListener('click', function(){
+                history.back();
+            });
+    </script>
+
+  </body>
+</html>
