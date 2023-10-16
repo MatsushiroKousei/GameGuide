@@ -4,7 +4,10 @@ package jp.gihyo.projava.gameguide;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jp.gihyo.projava.gameguide.entity.Blog;
 import jp.gihyo.projava.gameguide.repository.BlogRepository;
+import org.apache.coyote.Request;
+import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
@@ -13,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
+import static java.awt.SystemColor.info;
+import static java.awt.SystemColor.text;
+
 @Controller
 public class HomeController {
     @Autowired
@@ -20,29 +26,14 @@ public class HomeController {
 
     @GetMapping("/index")
     String index(Model model) {
-        List<Blog> blogs = service.getBlogTop3();
-        Blog top1 = blogs.get(0);
-        Blog top2 = blogs.get(1);
-        Blog top3 = blogs.get(2);
-
-        List<Blog> blogs1 = service.BlogDate();
-        Blog Date1 = blogs1.get(0);
-        Blog Date2 = blogs1.get(1);
-        Blog Date3 = blogs1.get(2);
-
-        model.addAttribute("blogs", blogs);
-        model.addAttribute("top1", top1);
-        model.addAttribute("top2", top2);
-        model.addAttribute("top3", top3);
-        model.addAttribute("Date1", Date1);
-        model.addAttribute("Date2", Date2);
-        model.addAttribute("Date3", Date3);
-
-        model.addAttribute("blogs", blogs);
-        return "index";
+        List<Blog> blogs = service.getBlogTop3();            //serviceクラスのgetBlogTop3()が呼び出される
+        List<Blog> blogs1 = service.BlogDate();             //serviceクラスのBlogDate()が呼び出される
+        model.addAttribute("blogs", blogs);     //List<Blog> blogs が"blogs"としてhtmlで扱えるようになる
+        model.addAttribute("blogsDate", blogs1);//List<Blog> blogs1が"blogs1"としてhtmlで扱えるようになる
+        return "index"; //ホームページ
     }
 
-    @GetMapping("/postblog")
+    @GetMapping("/postblog")//
     String postBlog(Model model) {
         model.addAttribute("blogRequest", new BlogRequest());
         return "postblog";
@@ -55,7 +46,7 @@ public class HomeController {
         count++;
         blog.setViewCount(count);
         model.addAttribute("blog", blog);
-        model.addAttribute("BlogId",id);
+        model.addAttribute("BlogId", id);
         service.save(blog);
         return "blog";
     }
@@ -67,7 +58,7 @@ public class HomeController {
     }
 
     @GetMapping("/blog/delete/{id}")
-    public String deleteBlog(@PathVariable Integer id, Model model) {
+    public String deleteBlog(@PathVariable Integer id) {
         Blog blog = service.getByIdBlog(id);
         service.deleteByIdBlog(blog);
         return "redirect:/index";
@@ -99,7 +90,26 @@ public class HomeController {
         blog.setGoodCount(Goodcount);
         model.addAttribute("blog", blog);
         service.save(blog);
-        System.out.println(Goodcount);
+        System.out.println(Goodcount);//確認の為の記述
         return "redirect:/blog/" + id;
+    }
+
+    @GetMapping("/update/{id}")
+    String GetUpdate(@PathVariable("id") Integer id, Model model) {
+        Blog blog = service.getByIdBlog(id);
+        BlogRequest br = new BlogRequest();
+        br.setTitle(blog.getTitle());
+        br.setContents(blog.getText());
+        br.setId(id);
+        model.addAttribute("blogRequest", br);
+        return "edit";
+    }
+        @PostMapping("/blog/edit")
+    public String editBlog(@ModelAttribute BlogRequest request) {
+        Blog blog = service.getByIdBlog(request.getId());
+        blog.setTitle(request.getTitle());
+        blog.setText(request.getContents());
+        service.save(blog);
+                return "redirect:/index";
     }
 }

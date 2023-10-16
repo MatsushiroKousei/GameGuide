@@ -22,28 +22,28 @@ public class BlogService {
        return blogRepository.findAll();
     }
     public void create(BlogRequest blogRequest) {
-        blogRepository.save(CreateBlog(blogRequest));
+
+        blogRepository.save(CreateBlog(blogRequest));//??
     }
+    public List<Blog> getBlogTop3() {return blogRepository.getBlogList();}//BlogRepositoryのQuery:getBlogList()が使える
 
-    public List<Blog> getBlogTop3() {return blogRepository.getBlogList();}
-    public List<Blog> BlogDate() {return blogRepository.getDate();}
+    public List<Blog> BlogDate() {return blogRepository.getDate();}//logRepositoryのQuery:getDate()が使える
 
+    Blog getByIdBlog(Integer id) {return blogRepository.getByIdBlog(id);}//logRepositoryのQuery:getByIdBlog(@Param("id")Integer id)が使える
 
-    Blog getByIdBlog(Integer id) {return blogRepository.getByIdBlog(id);}
+    public void save(Blog con) {blogRepository.save(con);}//??
 
-    public void save(Blog con) {blogRepository.save(con);}
+    public void deleteByIdBlog(Blog id) {blogRepository.delete(id);}//??
 
-    public void deleteByIdBlog(Blog id) {blogRepository.delete(id);}
+    public void blogUpdate(String text, String title, Integer id) {blogRepository.upDateBlog(text,title,id);}
 
     public List<Blog> partsSearch(String title) {return blogRepository.partsSearch(title);}
-
     /**
      * Creaateはリクエストを受け取ってentityクラスをセットして返す
      *
      */
     private Blog CreateBlog(BlogRequest blogRequest){
         Blog blog = new Blog();
-
         blog.setText(blogRequest.getContents());
         blog.setTitle(blogRequest.getTitle());
         blog.setViewCount(0);
@@ -51,22 +51,4 @@ public class BlogService {
         blog.setCreatedDate(new Date());
         return blog;
     }
-
-//    public void search(BlogsRequest blogsRequest) {
-//        blogRepository.save(SearchBlog(blogsRequest));
-//    }
-    /**
-     * Searchはリクエストを受け取ってentityクラスをセットして返す
-     *substringはList型には使えない。
-     */
-//    private Blog SearchBlog(BlogsRequest blogsRequest){
-//        Blog blogList = new Blog();
-//        blogList.setText(blogsRequest.getContents());
-//        String gtc = blogsRequest.getContents();
-//        blogList.setText(blogsRequest.getContents());
-//        blogList.setTitle(blogsRequest.getTitle());
-//        blogList.setViewCount(0);
-//        blogList.setCreatedDate(new Date());
-//        return blogList;
-//    }
 }
