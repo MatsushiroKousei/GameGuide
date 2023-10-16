@@ -21,6 +21,7 @@ public class BlogService {
     List<Blog> blogGetAll(){
        return blogRepository.findAll();
     }
+
     public void create(BlogRequest blogRequest) {
 
         blogRepository.save(CreateBlog(blogRequest));//??
