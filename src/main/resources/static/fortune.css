@@ -5,11 +5,15 @@ body {
 
 h1 {
          font-size: 48px;
-         background-color: #9cc7e4;
+         background-color: #136FFF;
          margin: 5px 0px;
          padding: 10px;
-         color: #fff;
+         color:	#3CB371;
          text-align: center;
+         text-shadow: 3px 3px 0 #9db;
+        -webkit-text-stroke: 1px #fff;
+        text-stroke: 1px #fff;
+        font-weight: bold;
  }
 
  span {
@@ -21,8 +25,8 @@ h1 {
  }
 
  p {
-        background-color: #9cc7e4;
-        color: #fff;
+        background-color: #136FFF;
+        color: #3CB371;
         font-size: 28px;
         font-weight: bold;
         text-align: center;
@@ -30,6 +34,10 @@ h1 {
         margin: 1px auto;
         padding: 10px;
         border-radius: 10px;
+        text-shadow: 3px 3px 0 #9db;
+        -webkit-text-stroke: 1px #fff;
+        text-stroke: 1px #fff;
+        font-weight: bold;
  }
 
  div.image {
@@ -37,4 +45,15 @@ h1 {
         height: 300px;
         margin: 2px auto;
         text-align: center;
+ }
+ input {
+       background-color: #3CB371;
+       border-radius: 5px;
+       border: 1px solid skyblue;
+       margin: 10px 5px;
+       padding: 5px 15px;
+       color: #fff;
+ }
+ input:hover {
+       background-color: skyblue;
  }
