@@ -118,14 +118,23 @@
     <div class="pagination">
       前へ　１　２　３　・・・　最後へ
     </div>
-    <div class="ranking_box">
-      <div class="ranking1">ランキング1位</div>
-      最後のボスを倒す攻略法
-      <div class="ranking2">ランキング２位</div>
-      妖精を仲間にする方法
-      <div class="ranking3">ランキング３位</div>
-      裏技・経験値の稼ぎ方
-    </div>
+<!--    <div class="ranking_box" >-->
+<!--      <div class="ranking1">ランキング1位</div>-->
+<!--      最後のボスを倒す攻略法-->
+<!--      <div class="ranking2">ランキング２位</div>-->
+<!--      妖精を仲間にする方法-->
+<!--      <div class="ranking3">ランキング３位</div>-->
+<!--      裏技・経験値の稼ぎ方-->
+<!--    </div>-->
+
+
+    <article class="ranking_box"  th:each="blogs: ${blogs}">
+            <div class="ranking1">ランキング1位</div>
+      <div class="toppostbutton"><a th:href="@{'/blog/' + ${blogs.id}}" ><p th:text="${blogs.title}"></p></a></div>
+      <div class="ranking1">ランキング2位</div>
+      <div class="ranking1">ランキング3位</div>
+    </article>
+
     <div class="right_prbox">
       ここにはPRが入ります。
       ここにはPRが入ります。
