@@ -11,6 +11,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.parser.Entity;
@@ -35,10 +37,6 @@ public class HomeController {
 
     @GetMapping("/postblog")//
     String postBlog(Model model) {
-
-        if (model == null) {
-            model.addAttribute("empty", "内容がないよう。");
-        }
         model.addAttribute("blogRequest", new BlogRequest());
         return "postblog";
     }
@@ -60,7 +58,6 @@ public class HomeController {
         service.create(blogRequest);
         return "redirect:/index";
     }
-
     @GetMapping("/blog/delete/{id}")
     public String deleteBlog(@PathVariable Integer id) {
         Blog blog = service.getByIdBlog(id);
