@@ -59,10 +59,7 @@ public class HomeController implements WebMvcConfigurer{
 
     //
     @PostMapping("/blog/add")
-    public String checkPersonInfo(@Validated Model model,@ModelAttribute BlogRequest blogRequest, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "postblog";
-        }
+    public String checkPersonInfo(BlogRequest blogRequest, Model model) {
         service.create(blogRequest);
         return "redirect:/index";
     }

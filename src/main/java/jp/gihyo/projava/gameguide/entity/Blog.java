@@ -19,11 +19,10 @@ public class Blog { //DBに操作してもらうた為の情報（Entityクラ�
     @GeneratedValue(strategy = GenerationType.IDENTITY)  //主キーが自動生成される
     private Integer id;
 
-    @NotEmpty
+
     @Column(name="title", length = 30) //@Column:テーブルのカラム情報を示す
     private String title;
 
-    @NotEmpty
     @Column(name = "text", length = 1000)
     private String text;
 
