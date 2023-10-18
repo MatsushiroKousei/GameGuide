@@ -34,8 +34,8 @@ h1 {
         margin: 1px auto;
         padding: 10px;
         border-radius: 10px;
-        text-shadow: 3px 3px 0 #9db;
-        -webkit-text-stroke: 1px #fff;
+        text-shadow: 1px 1px 0 #9db;
+        -webkit-text-stroke: 0.5px #fff;
         text-stroke: 1px #fff;
         font-weight: bold;
  }
