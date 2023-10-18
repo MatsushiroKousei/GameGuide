@@ -9,13 +9,23 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import java.util.List;
 
 @Controller
-public class HomeController {
+public class HomeController implements WebMvcConfigurer{
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/results").setViewName("results");
+    }
     @Autowired
     BlogService service;
-//ホームページ新着と人気投稿の表示start
+
+
+
+        //ホームページ新着と人気投稿の表示start
     @GetMapping("/index")
     String index(Model model) {
         List<Blog> blogs = service.getBlogTop3();
@@ -26,12 +36,13 @@ public class HomeController {
     }
 //ホームページ新着と人気投稿の表示end
 
-//
+    //
     @GetMapping("/postblog")
     String postBlog(Model model) {
         model.addAttribute("blogRequest", new BlogRequest());
         return "postblog";
     }
+
     @GetMapping("/blog/{id}")
     String viewBlog(Model model, @PathVariable("id") Integer id) {
         Blog blog = service.getByIdBlog(id);
@@ -41,13 +52,17 @@ public class HomeController {
         List<Blog> blogs = service.getBlogTop3();
         model.addAttribute("blog", blog);
         model.addAttribute("BlogId", id);
-        model.addAttribute("blogs",blogs);
+        model.addAttribute("blogs", blogs);
         service.save(blog);
         return "blog";
     }
-//
-    @RequestMapping(value = "/blog/add")
-    String post(Model model, @ModelAttribute BlogRequest blogRequest) {
+
+    //
+    @PostMapping("/blog/add")
+    public String checkPersonInfo(@Validated Model model,@ModelAttribute BlogRequest blogRequest, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "postblog";
+        }
         service.create(blogRequest);
         return "redirect:/index";
     }
@@ -87,12 +102,13 @@ public class HomeController {
         model.addAttribute("blogRequest", br);
         return "edit";
     }
-        @PostMapping("/blog/edit")
+
+    @PostMapping("/blog/edit")
     public String editBlog(@ModelAttribute BlogRequest request) {
         Blog blog = service.getByIdBlog(request.getId());
         blog.setTitle(request.getTitle());
         blog.setText(request.getContents());
         service.save(blog);
-                return "redirect:/index";
+        return "redirect:/index";
     }
 }
