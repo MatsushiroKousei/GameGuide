@@ -25,12 +25,12 @@
             <form th:action="@{blog/add}" th:object="${blogRequest}">
                 <div class="input_form">
                     <h3>タイトルを記入※</h3>
-                    <input type="text" id="blog_tittle" name="blog_title" size="50"
+                    <input type="text" id="blog_tittle" class="inputText" name="blog_title"
                            placeholder="ここにタイトルを書きます。50文字まで" th:field="*{title}">
                 </div>
                 <div class="input_form">
                     <h3>記事を記入※</h3>
-                    <textarea id="blog_contents" name="blog_contents" rows="50" placeholder="ここに記事を書きます。"
+                    <textarea id="blog_contents" class="inputTextarea" name="blog_contents" rows="50" placeholder="ここに記事を書きます。"
                               th:field="*{contents}"></textarea>
 
                     <!--画像アップロードも使っていません。

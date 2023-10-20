@@ -11,6 +11,10 @@ body {
     display: flex;
 }
 
+.tac {
+    text-align: center;
+}
+
 .between {
     justify-content: space-between;
 }
@@ -19,7 +23,6 @@ body {
     max-width: 980px;
     background-color: #9cc7e4;
     margin: 0 auto;
-
 }
 
 .wide_wrapper {
@@ -36,7 +39,6 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     margin-bottom: 0px;
-
 }
 
 .topheader span {
@@ -123,7 +125,6 @@ h2.top {
 }
 
 .container {
-    width: 980;
     padding: 20px 10px 20px 20px;
     text-align: left;
 
@@ -336,7 +337,6 @@ ul.footer_nav li a:hover {
 }
 
 /*Home*/
-
 .new_items h2 {
     color: red;
     margin: 0px auto;
@@ -364,8 +364,6 @@ ul.footer_nav li a:hover {
 input#search {
     margin-right: 20px;
 }
-
-
 
 /*Blogページ*/
 .blog h2 {
@@ -519,7 +517,6 @@ input#search {
 .post_header {
     background-color: #139c25;
     color: #FFF;
-    /* width: 400px; */
     background-position: right;
     background-size: 400px;
     font-size: 25px;
@@ -647,12 +644,8 @@ input#search {
     font-weight: 600;
 }
 
-/* .triangle {
-
-} */
 
 /*blog投稿ページ*/
-
 .postblog_header {
     background-color: #139c25;
     color: #FFF;
@@ -670,7 +663,7 @@ input#search {
 
 input[type="text"] {
     padding: 5px;
-    max-width: 800x;
+    width: 350x;
 }
 
 .input_form {
@@ -682,7 +675,7 @@ input[type="text"] {
 }
 
 .input_form textarea {
-    width: 800px;
+    width: 700px;
 }
 
 .post_blog {
@@ -844,7 +837,6 @@ input[type="text"] {
 
 .dialog_wrap {
     display: flex;
-    /*コレ*/
     justify-content: space-between;
 }
 
@@ -972,7 +964,6 @@ button a:hover {
     top: 8px;
 }
 
-
 #menu-btn-check:checked~.menu-btn span {
     background-color: rgba(255, 255, 255, 0);
     /*メニューオープン時は真ん中の線を透明にする*/
@@ -1041,12 +1032,12 @@ button a:hover {
     height: 100%;
     position: fixed;
     top: 0;
-    left: 100%;
     /*leftの値を変更してメニューを画面外へ*/
+    left: 100%;
     z-index: 80;
     background-color: #3584bb;
-    transition: all 0.5s;
     /*アニメーション設定*/
+    transition: all 0.5s;
 }
 
 
@@ -1134,42 +1125,43 @@ button a:hover {
     background-position: center;
 }
 
-/*ul.slider > li:not(:first-child) {
-    display: none;
-}*/
 
-slick>slock__bg01 {
+.slick>slock__bg01 {
     display: none;
 }
 
 /*スマホ対応*/
-@media screen and (max-width:480px) {
+@media screen and (min-width:1024px) {
+    .menu-btn {
+        display: none;
+    }
+    .input_form textarea {
+        width: 800px;
+    }
+}
+
+@media screen and (max-width: 900px) {
     .topmenu {
         display: none;
+    }
 
-        .body {
-            max-width: 550px;
-        }
+    .menu-btn {}
 
-        .form_item>textarea {
-            width: 300px;
-        }
+    .form_item>textarea {
+        width: 600px;
+    }
 
-        .input_form textarea {
-            width: 300px;
-        }
+    .input_form textarea {
+        width: 600px;
+    }
 
-        .container {
-            width: 400px;
+    .container {
+        max-width: 800px;
+    }
 
-        }
-        .df {
-        display:block;
-        }
-
-        .mypage_info {
-                grid-template-columns: 1fr;
-        }
+    .mypage_info {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -1179,8 +1171,12 @@ slick>slock__bg01 {
 
     .menu-btn {}
 
+        .input[type="text"] {
+            width: 300px;
+        }
+
     .form_item>textarea {
-        width: 400px;
+        width: 300px;
     }
 
     .input_form textarea {
@@ -1188,16 +1184,92 @@ slick>slock__bg01 {
     }
 
     .container {
-        width: 600px;
+        max-width: 700px;
     }
 
     .mypage_info {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+    }
+
+    .form_item>input[type="email"] {
+        width: 200px;
     }
 }
 
-@media screen and (min-width:1024px) {
-    .menu-btn {
+@media screen and (max-width: 600px) {
+    .topmenu {
         display: none;
+    }
+
+    .menu-btn {}
+
+        .input[type="text"] {
+            width: 300px;
+        }
+
+    .form_item>textarea {
+        mwidth: 300px;
+    }
+
+    .input_form textarea {
+        width: 300px;
+    }
+
+    .container {
+        max-width: 700px;
+    }
+
+    .mypage_info {
+        grid-template-columns: 1fr;
+    }
+
+    .form_item>input[type="email"] {
+        width: 200px;
+    }
+}
+
+
+@media screen and (max-width:480px) {
+    .topmenu {
+        display: none;
+    }
+
+    .body {
+        max-width: 550px;
+    }
+    .input[type="text"] {
+        width: 200px;
+    }
+
+    .inputText {
+        width: 70%;
+    }
+
+    .inputTextarea {
+            width: 80%;
+    }
+
+    .form_item>textarea {
+        width: 150px;
+    }
+
+    .input_form textarea {
+        width: 200px;
+    }
+
+    .container {
+
+    }
+
+    .df {
+        display: block;
+    }
+
+    .mypage_info {
+        grid-template-columns: 1fr;
+    }
+
+    .form_item>input[type="email"] {
+        width: 200px;
     }
 }
