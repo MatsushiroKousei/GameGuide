@@ -24,6 +24,15 @@ public class HomeController {
     @Autowired
     BlogService service;
 
+    @GetMapping("/")
+    String toppage(Model model) {
+        List<Blog> blogs = service.getBlogTop3();            //serviceクラスのgetBlogTop3()が呼び出される
+        List<Blog> blogs1 = service.BlogDate();             //serviceクラスのBlogDate()が呼び出される
+        model.addAttribute("blogs", blogs);     //List<Blog> blogs が"blogs"としてhtmlで扱えるようになる
+        model.addAttribute("blogsDate", blogs1);//List<Blog> blogs1が"blogs1"としてhtmlで扱えるようになる
+        return "index"; //ホームページ
+    }
+
     @GetMapping("/index")
     String index(Model model) {
         List<Blog> blogs = service.getBlogTop3();            //serviceクラスのgetBlogTop3()が呼び出される

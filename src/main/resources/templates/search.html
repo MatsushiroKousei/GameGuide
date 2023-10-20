@@ -1,119 +1,63 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.tyhmeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- 共通headで置き換える タイトルは()内に第一引数-->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ゲーム攻略記事</title>
-    <link th:href="@{/mainstyle.css}" rel="stylesheet">
-    <link th:href="@{/sanitize.css}" rel="stylesheet">
+<head th:replace="common :: meta_header('ゲーム攻略記事/検索',~{::link},~{::script})">
+    <!-- (2)このページ固有で読み込むCSS/JS -->
+    <!--    <link rel="stylesheet" th:href="@{/css/mainstyle.css}" />-->
+    <!--    <script></script>-->
 </head>
 
 <body>
 <div class="wrapper">
 
-    <head>
-        <div class="topheader">
-            x
-            <div class="wide_wrapper">
-                <ul>
-                    <li>これは、ゲーム攻略記事サイトです。〇〇〇〇〇〇〇〇</li>
-                    <li class="top_login"><button>ログイン</button><button>新規登録</button></li>
-                </ul>
-            </div>
-        </div>
-        <div class="mainheader">
-            <h2 class="top">DRAGONQUEST 攻略</h2>
-        </div>
-        <!-- <div class="topmenu">
-            <ul class="nav">
-                <li><a href="">home</a></li>
-                <li><a href="">about</a></li>
-                <li><a href="">items</a></li>
-                <li><a href="">news</a></li>
-                <li><a href="">contact</a></li>
-            </ul>
-        </div> -->
-
-        <div class="topmenu">
-            <nav id="g_navi">
-                <ul>
-                    <li><a href="/index">ホーム</a></li>
-                    <li><a href="/postblog">ブログ</a></li>
-                    <li><a href="/menu">メニュー</a></li>
-                    <li><a href="/access">アクセス</a></li>
-                    <li><a href="/contact">お問い合わせ</a></li>
-                </ul>
-            </nav>
-        </div>
-    </head>
-    <div class="topsearth">
-
-        <form action="/search">
-            <!--            <label>新着順</label><input type="radio" name="order" value="新着順" checked>-->
-            <!--            <label>人気順</label><input type="radio" name="order" value="人気順">-->
-            <input type="text" id="search" name="search" size="20" /><button>検索</button>
-            <!--            <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>-->
-            <!--            <label>OR検索</label><input type="radio" name="keyword" value="OR">-->
-            <!--            <label>NOT検索</label><input type="radio" name="keyword" value="NOT">-->
-        </form>
-
-    </div>
-
-    <!-- <div class="maincontents"> -->
-
+    <!--↓共通headerの呼び出し-->
+    <div th:replace="common :: header"></div>
     <div class="container">
-
-        <p>デモ</p>
-
-        <!--        <article class="toppostitem" th:each="blog:${blogs}">-->
-        <!--            <span class="toppostid">@Matsushiro</span>-->
-        <!--            <div class="toppostdate"><p th:text="${blogs.get(0).createdDate}"></p></div>-->
-        <!--            <h4 class="topposttittle"><p th:text="${blogs.get(0).title}"></p></h4>-->
-        <!--            <div class="toppostcontents"><p th:text="${blogs.get(0).text}"></p></div>-->
-        <!--            <a th:href="@{/blog/{id}(id=${blogs.get(0).id})}">この記事を読む</a>-->
-        <!--        </article>-->
-        <!-- type0start -->
+        <!--↓記事が無かった時の記載-->
         <p th:text="${empty}"></p>
         <article class="toppostitem" th:each="blogs: ${blogs}">
             <span class="toppostid">@Matsushiro</span>
-            <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>
-            <h4 class="topposttittle"><p th:text="${blogs.title}"></p></h4>
-            <div class="toppostcontents"><p th:text="${blogs.text}"></p></div>
-            <div class="toppostbutton"><button><a th:href="@{/blog/{id}(id=${blogs.id})}">この記事を読む</a></button></div>
+            <div class="toppostdate">
+                <p th:text="${blogs.createdDate}"></p>
+            </div>
+            <h4 class="topposttittle">
+                <p th:text="${blogs.title}"></p>
+            </h4>
+            <div class="toppostcontents">
+                <p th:text="${blogs.text}"></p>
+            </div>
+            <div class="between df">
+                <div class="toppostview">閲覧回数 <span th:text="${blogs.viewCount}"></span></div>
+                <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${blogs.id}}">この記事を読む</a></button></div>
+            </div>
         </article>
-        <!-- type0end -->
+        <!--↑記事が無かった時の記載-->
 
 
         <article class="toppostitem" th:each="items: ${items}">
             <span class="toppostid">@Matsushiro</span>
             <!--            <div class="toppostdate"><p th:text="${blogs.createdDate}"></p></div>-->
-            <div class="toppostdate"><p th:text="${#dates.format(items.createdDate, 'yyyy/MM/dd')}"></p></div>
-            <h4 class="topposttittle"><p th:text="${items.title}"></p></h4>
-            <div class="toppostcontents"><p th:text="${items.text}"></p></div>
-            <div class="toppostbutton"><button><a th:href="@{/blog/{id}(id=${items.id})}">この記事を読む</a></button></div>
+            <div class="toppostdate">
+                <p th:text="${#dates.format(items.createdDate, 'yyyy/MM/dd')}"></p>
+            </div>
+            <h4 class="topposttittle">
+                <p th:text="${items.title}"></p>
+            </h4>
+            <div class="toppostcontents">
+                <p th:text="${items.text}"></p>
+            </div>
+            <div class="between df">
+                <div class="toppostview">閲覧回数 <span th:text="${items.viewCount}"></span></div>
+                <div class="toppostbutton"><button><a th:href="@{'/blog/' + ${items.id}}">この記事を読む</a></button></div>
+            </div>
         </article>
-
-
-
-        <!--        デモstart-->
-
-        <!--        <article class="toppostitem">-->
-        <!--            <span class="toppostid">@Matsushiro</span>-->
-        <!--            <div class="toppostdate">2023年09月04日</div>-->
-        <!--            <h4 class="topposttittle">タイトルが表示</h4>-->
-        <!--            <div class="toppostcontents">記事内容が100文字？が表示・・・</div>-->
-        <!--            <div class="toppostbutton"><button>この記事を読む</button></div>-->
-        <!--        </article>-->
-
-        <!--        デモend-->
 
         <!-- ページングstart -->
         <ul class="paging">
-            <li>
+            <li class="frontpg">
                 <span th:if="${pages.first}">&lt;&lt;</span>
-                <a th:if="${not pages.first}"
-                   th:href="@{/search(page=0)}+@{&search=__${title}__}">&lt;&lt;</a>
+                <a th:if="${not pages.first}" th:href="@{/search(page=0)}+@{&search=__${title}__}">&lt;&lt;</a>
             </li>
             <li th:each="i:${#numbers.sequence(0, pages.totalPages-1)}">
                 <!--            <li th:each="i:${#numbers.sequence(0, pages,totalPages-1)}">-->
@@ -122,47 +66,17 @@
                     <span th:text="${i+1}"></span>
                 </a>
             </li>
-            <span th:if="${pages.last}">&gt;&gt;</span>
-            <a th:if="${not pages.last}"
-               th:href="@{/search(page=(${pages.totalPages}-1))}+@{&search=__${title}__}">&gt;&gt;</a>
+            <li class="backpg">
+                <span th:if="${pages.last}">&gt;&gt;</span>
+                <a th:if="${not pages.last}"
+                   th:href="@{/search(page=(${pages.totalPages}-1))}+@{&search=__${title}__}">&gt;&gt;</a>
             </li>
         </ul>
         <!-- ページングend -->
-
-
-
-
-        <!--        <div class="pagination">-->
-        <!--            前へ　１　２　３　・・・　最後へ-->
-        <!--        </div>-->
-
-        <!-- </div>   -->
     </div>
 </div>
-<footer>
-    <div class="wide_wrapper">
-        <div class="footer_logo">Matsushiro</div>
-        <div class="footer_link">
-            <div class="wrap">
-                <div class="cal">
-                    <ul class="footer_nav">
-                        <li><a href="" target="_blank">お知らせ</a></li>
-                        <li><a href="" target="_blank">企業情報</a></li>
-                        <li><a href="" target="_blank">プライバシーポリシー</a></li>
-                        <li><a href="" target="_blank">サイトご利用にあたって</a></li>
-                    </ul>
-                </div>
-                <div class="cal">
-                    <ul class="footer_nav">
-                        <li><a href="" target="_blank">ご意見・ご要望</a></li>
-                        <li><a href="" target="_blank">サイトマップ</a></li>
-                        <li><a href="" target="_blank">お問い合わせ</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">Copyright © Matsushiro Corporation All Rights Reserved.</div>
-    </div>
-</footer>
+<!--共通headの呼び出し-->
+<div th:replace="common :: footer"></div>
 </body>
+
 </html>

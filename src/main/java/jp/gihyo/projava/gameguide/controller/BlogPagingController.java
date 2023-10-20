@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -63,5 +64,26 @@ public class BlogPagingController {
         model.addAttribute("items", itemList);
 
         return "search";
+    }
+
+    //ここから下は、HomeControllerに移す事
+
+    //マイページ
+    @GetMapping("/mypage")
+    String mypage(Model model){
+        return "mypage";
+    }
+
+
+    //お問い合わせフォーム
+    @GetMapping("/contact")
+    String contact(Model model){
+        return "contactform";
+    }
+
+    //デモページ 下のリンク部のページです。必要に応じて書き換えてください。
+    @GetMapping("/demopage")
+    String demopage(Model model){
+        return "demopage";
     }
 }
