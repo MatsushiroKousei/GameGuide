@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- 共通headで置き換える タイトルは()内に第一引数-->
+
+<head th:replace="common :: meta_header('ゲーム攻略記事/MYPAGE',~{::link},~{::script})">
+    <!-- (2)このページ固有で読み込むCSS/JS -->
+    <!--    <link rel="stylesheet" th:href="@{/css/mainstyle.css}" />-->
+    <!--    <script></script>-->
+</head>
+
+<body>
+<div class="wrapper">
+
+    <!--↓共通headerの呼び出し-->
+    <div th:replace="common :: header"></div>
+
+    <!--↓MainContents-->
+    <div class="container">
+        <div class="mypage_header">MYPAGE</div>
+        <!-- <div class="post_header">新しい記事を書く</div> -->
+        <div class="input_text">
+            <div class="new_items">
+                <div class="info_wrap">
+                    <div class="mypage_info">
+                        <div class="w3columns">
+                            <!--アバター画像-->
+                            <div class="user_avatar">
+                                <img th:src="@{/images/avatar.png}">
+                            </div>
+                            <!--usernameの表示-->
+                            <span class="mypage_username">@Matsushiro</span>
+                        </div>
+                        <div class="w3columns">
+                            <!--プロフィール１-->
+                            <div class="user_status1">
+                                <ul>
+                                    <li>◆持っている資格</li>
+                                    <li>JavaSilver</li>
+                                    <li>これはstatus情報です。</li>
+                                    <li>これはstatus情報です。</li>
+                                    <li>これはstatus情報です。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="w3columns">
+                            <!--プロフィール２-->
+                            <div class="user_status2">
+                                <ul>
+                                    <li>これはstatus情報2です。</li>
+                                    <li>----------------------</li>
+                                    <li>趣味はゲームです。</li>
+                                    <li>九州在住</li>
+                                    <li></li>
+                                    <li>----------------------</li>
+                                    <li>これはstatus情報2です。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="center_wrap">
+                    <div class="box400">
+                        <a th:href="@{/postblog}" class="tdnone">
+                            <div class="write_blog">新しい記事を書く</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--↓上に戻るアイコン-->
+<div class="up_top"><a href="#"><i class="fa-solid fa-arrow-up-from-bracket fa-stack-2x"></i></a></div>
+
+<!--共通headの呼び出し-->
+<div th:replace="common :: footer"></div>
+</body>
+
+</html>

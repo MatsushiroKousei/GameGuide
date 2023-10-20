@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- 共通headで置き換える タイトルは()内に第一引数-->
+
+<head th:replace="common :: meta_header('ゲーム攻略記事/ブログ投稿',~{::link},~{::script})">
+  <!-- (2)このページ固有で読み込むCSS/JS -->
+  <!--    <link rel="stylesheet" th:href="@{/css/mainstyle.css}" />-->
+  <!--    <script></script>-->
+</head>
+
+<body>
+<div class="wrapper">
+
+  <!--↓共通headerの呼び出し-->
+  <div th:replace="common :: header"></div>
+
+  <div class="container">
+    <!-- infoページの印 -->
+    <div class="info_header">INFO</div>
+    <div class="new_items">
+      <div class="center_wrap">
+
+      </div>
+      <h2>タイトルを入れてください</h2>
+      <hr>
+      <div class="input_text">
+        ここに文字を入れてください。
+        ここに文字を入れてください。
+        ここに文字を入れてください。
+        ここに文字を入れてください。
+        ここに文字を入れてください。
+      </div>
+    </div>
+  </div>
+  　<!--共通headの呼び出し-->
+  　<div th:replace="common :: footer"></div>
+</div>
+</body>
