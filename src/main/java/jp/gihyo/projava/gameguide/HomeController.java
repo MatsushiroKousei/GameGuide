@@ -2,6 +2,7 @@ package jp.gihyo.projava.gameguide;
 
 
 
+import jakarta.persistence.Id;
 import jp.gihyo.projava.gameguide.entity.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -120,7 +121,10 @@ public class HomeController {
      * 編集画面の変更内容を送信する処理
      */
     @PostMapping("/blog/edit")
-    public String editBlog(@ModelAttribute BlogRequest request) {
+    public String editBlog(Model model,@ModelAttribute @Validated BlogRequest request,BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            return "/edit";
+        }
         Blog blog = service.getByIdBlog(request.getId());
         blog.setTitle(request.getTitle());
         blog.setText(request.getContents());
