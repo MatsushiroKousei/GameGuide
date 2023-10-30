@@ -62,7 +62,6 @@ body {
 }
 
 
-
 ul {
     margin: 0;
 }
@@ -611,6 +610,7 @@ input[type="text"] {
     transform: translate(0, 2px);
     border-bottom: none;
 }
+
 
 .delete_blog {
     background-color: #139c25;

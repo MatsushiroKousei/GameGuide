@@ -58,17 +58,20 @@
       </div>
       <h2>記事の編集</h2>
       <hr>
-      <form method="post" th:action="@{/blog/edit}" th:object="${blogRequest}">
+<!--      <form method="post" th:action="@{/blog/edit}" th:object="${blogRequest}" novalidate>-->
         <input type="hidden" th:field="*{id}">
         <div class="input_form">
           <h3>タイトルを記入※</h3>
           <input type="text" id="blog_tittle" name="blog_title" size="50"
                  placeholder="ここにタイトルを書きます。50文字まで" th:field="*{title}">
+<!--          <span class="errorStr" th:errors="*{title}"></span>-->
         </div>
         <div class="input_form">
           <h3>記事を記入※</h3>
           <textarea id="blog_contents" name="blog_contents" rows="50" cols="100"
                     placeholder="ここに記事を書きます。"th:field="*{contents}"></textarea>
+<!--          <span class="errorStr" th:errors="*{contents}"></span>-->
+
           <div class="put_image">
             <p><input type="file" name="upfile" /></p>
             <p><input type="submit" value="アップロード" /></p>

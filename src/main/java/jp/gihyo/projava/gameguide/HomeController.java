@@ -6,24 +6,17 @@ import jp.gihyo.projava.gameguide.entity.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
 import java.util.List;
 
 @Controller
-public class HomeController implements WebMvcConfigurer{
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/results").setViewName("results");
-    }
+public class HomeController {
     @Autowired
     BlogService service;
 
-
-
-        //ホームページ新着と人気投稿の表示start
+    //ホームページ新着と人気投稿の表示start
     @GetMapping("/index")
     String index(Model model) {
         List<Blog> blogs = service.getBlogTop3();
@@ -32,15 +25,19 @@ public class HomeController implements WebMvcConfigurer{
         model.addAttribute("blogsDate", blogs1);
         return "index";
     }
-//ホームページ新着と人気投稿の表示end
+    //ホームページ新着と人気投稿の表示end
 
-    //
+    /**
+     *投稿画面表示
+     */
     @GetMapping("/postblog")
-    String postBlog(Model model) {
-        model.addAttribute("blogRequest", new BlogRequest());
+    String postBlog(Model model, BlogRequest request) {
+
         return "postblog";
     }
+    //
 
+    //
     @GetMapping("/blog/{id}")
     String viewBlog(Model model, @PathVariable("id") Integer id) {
         Blog blog = service.getByIdBlog(id);
@@ -54,21 +51,34 @@ public class HomeController implements WebMvcConfigurer{
         service.save(blog);
         return "blog";
     }
+    //
 
     //
     @PostMapping("/blog/add")
-    public String add(Model model, @ModelAttribute BlogRequest blogRequest) {
+    public String add(Model model, @ModelAttribute @Validated BlogRequest blogRequest,BindingResult result) {
+
+        //バリデーション追加sart
+        if (result.hasErrors()) {
+            return postBlog(model,blogRequest);
+        }
+        //バリデーション追加end
+
         service.create(blogRequest);
         return "redirect:/index";
     }
 
+    //
+
+    //
     @GetMapping("/blog/delete/{id}")
     public String deleteBlog(@PathVariable Integer id) {
         Blog blog = service.getByIdBlog(id);
         service.deleteByIdBlog(blog);
         return "redirect:/index";
     }
+    //
 
+    //
     @GetMapping("/good/{id}")
     String goodBlog(Model model, @PathVariable("id") Integer id) {
         Blog blog = service.getByIdBlog(id);
@@ -86,18 +96,24 @@ public class HomeController implements WebMvcConfigurer{
         System.out.println(Goodcount);//確認の為の記述
         return "redirect:/blog/" + id;
     }
+    //
 
+    //
     @GetMapping("/update/{id}")
     String GetUpdate(@PathVariable("id") Integer id, Model model) {
-        Blog blog = service.getByIdBlog(id);
         BlogRequest br = new BlogRequest();
+        Blog blog = service.getByIdBlog(id);
         br.setTitle(blog.getTitle());
         br.setContents(blog.getText());
         br.setId(id);
         model.addAttribute("blogRequest", br);
         return "edit";
     }
+    //
 
+    /**
+     *編集画面表示
+     */
     @PostMapping("/blog/edit")
     public String editBlog(@ModelAttribute BlogRequest request) {
         Blog blog = service.getByIdBlog(request.getId());
