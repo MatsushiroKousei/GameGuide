@@ -101,8 +101,8 @@ public class HomeController {
     //
     @GetMapping("/update/{id}")
     String GetUpdate(@PathVariable("id") Integer id, Model model) {
-        BlogRequest br = new BlogRequest();
         Blog blog = service.getByIdBlog(id);
+        BlogRequest br = new BlogRequest();
         br.setTitle(blog.getTitle());
         br.setContents(blog.getText());
         br.setId(id);
