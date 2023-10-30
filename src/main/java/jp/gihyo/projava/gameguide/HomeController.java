@@ -16,7 +16,9 @@ public class HomeController {
     @Autowired
     BlogService service;
 
-    //ホームページ新着と人気投稿の表示start
+    /*
+    ホームページの昇順表示処理（新着順と人気順（閲覧数））
+     */
     @GetMapping("/index")
     String index(Model model) {
         List<Blog> blogs = service.getBlogTop3();
@@ -25,7 +27,6 @@ public class HomeController {
         model.addAttribute("blogsDate", blogs1);
         return "index";
     }
-    //ホームページ新着と人気投稿の表示end
 
     /**
      *投稿画面表示
@@ -35,9 +36,10 @@ public class HomeController {
 
         return "postblog";
     }
-    //
 
-    //
+    /*
+    閲覧数処理（クリックを１回押されると閲覧数が＋１される）
+     */
     @GetMapping("/blog/{id}")
     String viewBlog(Model model, @PathVariable("id") Integer id) {
         Blog blog = service.getByIdBlog(id);
@@ -51,38 +53,41 @@ public class HomeController {
         service.save(blog);
         return "blog";
     }
-    //
 
-    //
+    /*
+    投稿送信（送る処理）
+     */
     @PostMapping("/blog/add")
     public String add(Model model, @ModelAttribute @Validated BlogRequest blogRequest,BindingResult result) {
 
-        //バリデーション追加sart
+        //---バリデーション追加sart---
         if (result.hasErrors()) {
             return postBlog(model,blogRequest);
         }
-        //バリデーション追加end
+        //---バリデーション追加end---
 
         service.create(blogRequest);
         return "redirect:/index";
     }
 
-    //
-
-    //
+    /*
+    削除処理
+     */
     @GetMapping("/blog/delete/{id}")
     public String deleteBlog(@PathVariable Integer id) {
         Blog blog = service.getByIdBlog(id);
         service.deleteByIdBlog(blog);
         return "redirect:/index";
     }
-    //
 
-    //
+    /*
+    good機能（閲覧数と同じ原理）
+     */
     @GetMapping("/good/{id}")
     String goodBlog(Model model, @PathVariable("id") Integer id) {
         Blog blog = service.getByIdBlog(id);
         Integer Goodcount = 0;
+        //trycatch文でNullPointerExceptionが確認される場合はcatchで処理。カウントを１追加
         try {
 
             Goodcount = blog.getGoodCount();
@@ -96,11 +101,12 @@ public class HomeController {
         System.out.println(Goodcount);//確認の為の記述
         return "redirect:/blog/" + id;
     }
-    //
 
-    //
+    /*
+    編集・更新画面の表示（idからのデータをセーブしてedit.htmlで表示）
+     */
     @GetMapping("/update/{id}")
-    String GetUpdate(@PathVariable("id") Integer id, Model model) {
+    String GetUpdate(@PathVariable("id") Integer id, Model model,BlogRequest request) {
         Blog blog = service.getByIdBlog(id);
         BlogRequest br = new BlogRequest();
         br.setTitle(blog.getTitle());
@@ -109,10 +115,9 @@ public class HomeController {
         model.addAttribute("blogRequest", br);
         return "edit";
     }
-    //
 
     /**
-     *編集画面表示
+     * 編集画面の変更内容を送信する処理
      */
     @PostMapping("/blog/edit")
     public String editBlog(@ModelAttribute BlogRequest request) {
