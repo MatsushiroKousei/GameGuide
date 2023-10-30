@@ -1,27 +1,105 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thimeleaf.org">
-  <html lang="ja">
+<html xmlns:th="http://www.tyhmeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ゲーム攻略記事</title>
+  <link th:href="@{/mainstyle.css}" rel="stylesheet">
+  <link th:href="@{/sanitize.css}" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
   <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="fortune.css">
-    <title>今日の運勢</title>
-  </head>
-  <body>
-    <h1>占い結果</h1>
-    <span>今日のあなたの運勢は・・・</span>
-    <span th:text="${fr}"></span>
-    <div class="image">
-
-      <img th:src="@{images/{fn3}.jpg (fn3=${fn3})}">
-
+    <!-- <div class="topheader">
+        <div class="wide_wrapper">
+            <ul>
+                <li>これは、ゲーム攻略記事サイトです。〇〇〇〇〇〇〇〇</li>
+                <li class="top_login"><button>ログイン</button><button>新規登録</button></li>
+            </ul>
+        </div>
+    </div>1
+    <div class="mainheader">
+        <h2 class="top">DRAGONQUEST 攻略</h2>
+    </div> -->
+    <div class="topmenu">
+      <nav id="g_navi">
+        <ul>
+          <li><a href="/index">ホーム</a></li>
+          <li><a href="/concept">コンセプト</a></li>
+          <li><a href="/menu">メニュー</a></li>
+          <li><a href="/access">アクセス</a></li>
+          <li><a href="/contact">お問い合わせ</a></li>
+          <li><a href="https://hiroba.dqx.jp/sc/">冒険者の広場</a></li>
+        </ul>
+      </nav>
     </div>
-    <p th:text="${cr}"></p>
-    <script>
+  </head>
+  <div class="container">
+    <div class="new_items">
+      <div class="mypage_info">
+      </div>
+      <div class="center_wrap">
+        <!-- <div class="box400">
+            <div class="post_header">新しい記事を書く</div>
+        </div> -->
+      </div>
+      <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="fortune.css">
+        <title>今日の運勢</title>
+      </head>
+      <body>
+      <h1>占い結果</h1>
+      <span>今日のあなたの運勢は・・・</span>
+      <span th:text="${fr}"></span>
+      <div class="image">
+
+        <img th:src="@{images/{fn3}.jpg (fn3=${fn3})}">
+
+      </div>
+      <p th:text="${cr}"></p>
+      <script>
             let btnBack = document.getElementById('btnBack');
             btnBack.addEventListener('click', function(){
                 history.back();
             });
     </script>
-  </body>
-  <input type="button" onclick="location.href='./'" value="ホーム">
+      </body>
+      <input type="button" onclick="location.href='./index'" value="ホーム">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="notice_box">
+      <div class="notice">通知（１）</div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="wide_wrapper">
+    <div class="footer_logo">Matsushiro</div>
+    <div class="footer_link">
+      <div class="wrap">
+        <div class="cal">
+          <ul class="footer_nav">
+            <li><a href="" target="_blank">お知らせ</a></li>
+            <li><a href="" target="_blank">企業情報</a></li>
+            <li><a href="" target="_blank">プライバシーポリシー</a></li>
+            <li><a href="" target="_blank">サイトご利用にあたって</a></li>
+          </ul>
+        </div>
+        <div class="cal">
+          <ul class="footer_nav">
+            <li><a href="" target="_blank">ご意見・ご要望</a></li>
+            <li><a href="" target="_blank">サイトマップ</a></li>
+            <li><a href="" target="_blank">お問い合わせ</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">Copyright © Matsushiro Corporation All Rights Reserved.</div>
+  </div>
+</footer>
+</body>
 </html>
