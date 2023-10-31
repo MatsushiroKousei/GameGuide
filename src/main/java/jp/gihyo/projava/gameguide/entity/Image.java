@@ -4,10 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Type;
-
-import java.sql.Blob;
-
 @Entity //DBのテーブル構造を表したオブジェクト
 @Table(name = "image")  //テーブル名の設定
 @Getter //依存関係Lombok「取得する」を自動生成してくれる

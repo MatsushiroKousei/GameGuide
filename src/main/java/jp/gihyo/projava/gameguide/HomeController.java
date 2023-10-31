@@ -1,8 +1,5 @@
 package jp.gihyo.projava.gameguide;
 
-
-
-import jakarta.persistence.Id;
 import jp.gihyo.projava.gameguide.entity.Blog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,7 +58,7 @@ public class HomeController {
     @PostMapping("/blog/add")
     public String add(Model model, @ModelAttribute @Validated BlogRequest blogRequest,BindingResult result) {
 
-        //---バリデーション追加sart---
+        //---バリデーション追加sart---<@ValidatedとBindingResultはセット if内に引っかかった場合、returnでGet処理（画面表示）に戻る。>
         if (result.hasErrors()) {
             return postBlog(model,blogRequest);
         }
@@ -122,9 +119,11 @@ public class HomeController {
      */
     @PostMapping("/blog/edit")
     public String editBlog(Model model,@ModelAttribute @Validated BlogRequest request,BindingResult bindingResult) {
+        //---バリデーション追加sart---<@ValidatedとBindingResultはセット if内に引っかかった場合、returnでGet処理（画面表示）に戻る。>
         if (bindingResult.hasErrors()){
             return "/edit";
         }
+        //---バリデーションend---
         Blog blog = service.getByIdBlog(request.getId());
         blog.setTitle(request.getTitle());
         blog.setText(request.getContents());
