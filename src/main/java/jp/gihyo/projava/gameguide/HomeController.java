@@ -45,8 +45,8 @@ public class HomeController {
     }
 
     @GetMapping("/postblog")//
-    String postBlog(Model model) {
-        model.addAttribute("blogRequest", new BlogRequest());
+    String postBlog(Model model,BlogRequest blogRequest) {
+
         return "postblog";
     }
 
@@ -62,8 +62,11 @@ public class HomeController {
         return "blog";
     }
 
-    @RequestMapping("/blog/add")
-    String post(Model model, @ModelAttribute BlogRequest blogRequest) {
+    @PostMapping("/blog/add")
+    String post(Model model, @Validated @ModelAttribute BlogRequest blogRequest,BindingResult result) {
+        if (result.hasErrors()){
+            return postBlog(model,blogRequest);
+        }
         service.create(blogRequest);
         return "redirect:/index";
     }

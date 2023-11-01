@@ -22,9 +22,10 @@
             </div>
             <h2>記事の投稿</h2>
             <hr>
-            <form th:action="@{blog/add}" th:object="${blogRequest}">
+            <form th:action="@{blog/add}" th:object="${blogRequest}" novalidate>
                 <div class="input_form">
                     <h3>タイトルを記入※</h3>
+
                     <input type="text" id="blog_tittle" class="inputText" name="blog_title"
                            placeholder="ここにタイトルを書きます。50文字まで" th:field="*{title}">
                 </div>
