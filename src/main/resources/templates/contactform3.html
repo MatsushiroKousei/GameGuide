@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- 共通headで置き換える タイトルは()内に第一引数-->
+<head th:replace="common :: meta_header('ゲーム攻略記事/TOP',~{::link},~{::script})">
+  <!-- (2)このページ固有で読み込むCSS/JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <!--  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
+  <!--  <script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>-->
+  <!--    <link rel="stylesheet" th:href="@{/css/mainstyle.css}" />-->
+  <!--    <script></script>-->
+</head>
+
+<body>
+<div class="wrapper">
+
+  <!--↓共通headerの呼び出し-->
+  <div th:replace="common :: header"></div>
+
+  <div class="container">
+    <h1 class="pb-2 mt-4 mb-2 border-bottom border-primary">
+      お問い合わせ
+    </h1>
+    <div>
+      <p>以下を入力して送信ボタンをクリックしてください。</p>
+      <form name="contactform" id="contactform" role="form">
+        <div class="form-group">
+          <!--          <label for="inputName" class="col-sm-3">お名前</label>-->
+          お名前
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="name"
+                   placeholder="お名前" value="">
+          </div>
+        </div>
+        <div class="form-group">
+          <!--          <label for="inputEmail" class="col-sm-3">メールアドレス</label>-->
+          メールアドレス
+          <div class="col-sm-9">
+            <input type="email" class="form-control" name="email"
+                   placeholder="メールアドレス" value="">
+          </div>
+        </div>
+        <div class="form-group">
+          <!--          <label for="inputMessage" class="col-sm-3">お問い合わせ内容</label>-->
+          お問い合わせ内容
+          <div class="col-sm-9">
+            <textarea class="form-control" name="message" rows="5">
+            </textarea>
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" name="btnSubmit"
+                  class="btn btn-success" id="btnSend">送信する</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--  </div>-->
+
+</div>
+<div class="up_top"><a href="#"><i class="fa-solid fa-arrow-up-from-bracket fa-stack-2x"></i></a></div>
+
+<!--共通headの呼び出し-->
+<div th:replace="common :: footer"></div>
+<script type="text/javascript">
+$(document).ready(function() {
+$('#btnSend').click(function() {
+$("#btnSend").prop("disabled", true);
+// フォームのデータをJSONに変換
+var rawData = $('#contactform').serializeArray();
+var data = {};
+jQuery.each(rawData, function(i, e) {
+data[e.name] = e.value;
+});
+// Ajaxを使ってメールを送信
+$.ajax({
+type: "POST",
+url: "./sendmail",
+dataType: "json",
+data: JSON.stringify(data),
+contentType: 'application/json',
+scriptCharset: 'utf-8',
+success: function(outdata, dataType) {
+if (outdata[0] == "OK") alert("メール送信しました");
+$("#btnSend").prop("disabled", false);
+},
+error: function(XMLHttpRequest, textStatus, errorThrown) {
+alert("Error : " + errorThrown);
+$("#btnSend").prop("disabled", false);
+}
+});
+});
+});
+</script>
+</body>
+</html>

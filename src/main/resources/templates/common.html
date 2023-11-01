@@ -1,0 +1,165 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- (1)共通にしたいheadをfragment化する -->
+<head th:fragment="meta_header(title,links,scripts)">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <!-- ウェブサイトの説明文　pc120文字　mobile70文字程度 -->
+  <meta name=”description” content=”DRAGONQUEST（ドラゴンクエスト）攻略サイトです。” />
+  <!-- ウェブサイトのキーワード　検索されたいキーワード　3〜5個程度 -->
+  <meta name=”keywords” content=”ドラゴンクエスト,ドラクエ,攻略”>
+
+  <!-- (2)共通で読み込むCSS/JS -->
+  <link rel="stylesheet" href="/css/sanitize.css" />
+  <link rel="stylesheet" href="/css/mainstyle.css" />
+  <link rel="stylesheet" href="/css/slick.css" />
+<!--  <link rel="stylesheet" href="/css/slick-theme.css" />-->
+  <!--slickを内部読み込み-->
+<!--  <script type="text/javascript" th:src="@{/js/slick.min.js}"></script>-->
+<!--  <script type="text/javascript" th:src="@{/js/slick.conf.js}"></script>-->
+  <!--CDNでslickを使う場合に記載 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.min.css">
+<!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css">-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <script type="text/javascript" th:src="@{/js/slick.min.js}"></script>
+  <!--<script type="text/javascript" th:src="@{/js/slick.min.js}"></script>-->
+  <script></script>
+  <script th:inline="javascript">
+$(function() {
+    $('.slick').slick({
+        fade: true,
+        autoplay: true,
+        speed: 1500,
+        autoplaySpeed : 2000,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        arrows: false,
+    })
+});</script>
+  <!-- (3)タイトルのフォーマット -->
+  <title th:text="${title}+' | DRAGON QUEST攻略ブログ'">各ページタイトル | sample app</title>
+
+  <!-- (4)各View固有で読み込むもの -->
+  <th:block th:replace="${links} ?: _" />
+  <th:block th:replace="${scripts} ?: _" />
+</head>
+<body>
+<!-- (5)body内で共通化したい部品をfragment化する -->
+<header th:fragment="header">
+  <head>
+    <div class="topheader">
+      <div class="wide_wrapper">
+        <ul>
+          <li>DRAGONQUEST攻略記事サイトです。〇〇〇〇〇〇〇〇</li>
+          <li class="top_login"><button>ログイン</button><button>新規登録</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mainheader">
+
+      <div class="slick">
+        <div class="slick__bg slick__bg01"></div>
+        <div class="slick__bg slick__bg02"></div>
+        <div class="slick__bg slick__bg03"></div>
+        <div class="slick__bg slick__bg04"></div>
+      </div>
+      <!--↓スライダー使用時、使わない-->
+      <!--<h2 class="top">DRAGONQUEST 攻略</h2>-->
+    </div>
+
+    <div class="topmenu">
+      <nav id="g_navi">
+        <ul>
+          <li><a href="/index">ホーム</a></li>
+          <LI><a href="/postblog">投稿する</a></LI>
+          <li><a href="/search?search=">ブログ一覧</a></li>
+          <li><a href="/mypage">マイページ</a></li>
+          <li><a href="/fortune" target="_blank">今日の運勢</a></li>
+          <li><a href="https://hiroba.dqx.jp/sc/" target="_blank">冒険者の広場</a></li>
+          <li><a href="/contact">お問い合わせ</a></li>
+
+
+        </ul>
+      </nav>
+    </div>
+  </head>
+  <div class="topsearth">
+
+    <form action="/search">
+      <!--                <label>新着順</label><input type="radio" name="order" value="新着順" checked>-->
+      <!--                <label>人気順</label><input type="radio" name="order" value="人気順">-->
+      <input type="text" id="search" name="search" size="20" /><button>検索</button>
+      <!--                <label>AND検索</label><input type="radio" name="keyword" value="AND" checked>-->
+      <!--                <label>OR検索</label><input type="radio" name="keyword" value="OR">-->
+      <!--                <label>NOT検索</label><input type="radio" name="keyword" value="NOT">-->
+    </form>
+
+  </div>
+
+  <!--start ハンバーガーメニュー-->
+  <div class="hamburger-menu">
+    <input type="checkbox" id="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn"><span></span></label>
+    <!--ここからメニュー-->
+    <div class="menu-content">
+      <ul>
+        <li>
+          <a href="/index">ホーム</a>
+        </li>
+        <li>
+          <a href="/postblog">投稿する</a>
+        </li>
+        <li>
+          <a href="/search?search=">ブログ一覧</a>
+        </li>
+        <li>
+          <a href="/mypage">マイページ</a>
+        </li>
+        <li>
+          <a href="/fortune" target="_blank">今日の運勢</a>
+        </li>
+        <li>
+          <a href="https://hiroba.dqx.jp/sc/" target="_blank">冒険者の広場</a>
+        </li>
+        <li>
+          <a href="/contact">お問い合わせ</a>
+        </li>
+      </ul>
+    </div>
+    <!--ここまでメニュー-->
+  </div>
+  <!--end ハンバーガーメニュー-->
+
+</header>
+
+
+<footer th:fragment="footer">
+  <footer>
+    <div class="wide_wrapper">
+      <div class="footer_logo">Matsushiro</div>
+      <div class="footer_link">
+        <div class="wrap">
+          <div class="cal">
+            <ul class="footer_nav">
+              <li><a href="/demopage" target="_blank">お知らせ</a></li>
+              <li><a href="/demopage" target="_blank">企業情報</a></li>
+              <li><a href="/demopage" target="_blank">プライバシーポリシー</a></li>
+              <li><a href="/demopage" target="_blank">サイトご利用にあたって</a></li>
+            </ul>
+          </div>
+          <div class="cal">
+            <ul class="footer_nav">
+              <li><a href="/demopage" target="_blank">ご意見・ご要望</a></li>
+              <li><a href="/demopage" target="_blank">サイトマップ</a></li>
+              <li><a href="/contact" target="_blank">お問い合わせ</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">Copyright © <a href="/">Matsushiro</a> Corporation All Rights Reserved.</div>
+    </div>
+  </footer>
+
+</footer>
+</body>
+</html>

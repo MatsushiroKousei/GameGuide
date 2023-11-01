@@ -3,6 +3,10 @@ body {
         font-family: "sans-serif","alba","Chick";
 }
 
+forture_wrap {
+    width: 50%;
+}
+
 h1 {
          font-size: 48px;
          background-color: #136FFF;
@@ -24,20 +28,27 @@ h1 {
         margin-bottom: 20px;
  }
 
- p {
+  .lackyCharacter {
         background-color: #136FFF;
         color: #3CB371;
         font-size: 28px;
         font-weight: bold;
         text-align: center;
         width: 700px;
-        margin: 1px auto;
+        margin: 50px auto;
         padding: 10px;
         border-radius: 10px;
         text-shadow: 1px 1px 0 #9db;
         -webkit-text-stroke: 0.5px #fff;
         text-stroke: 1px #fff;
         font-weight: bold;
+ }
+
+
+
+ .home_button {
+    padding-top: 50px;
+    text-align: center;
  }
 
  div.image {

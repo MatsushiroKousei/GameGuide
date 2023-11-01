@@ -1,18 +1,17 @@
-package jp.gihyo.projava.gameguide;
+package jp.gihyo.projava.gameguide.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class Fortune {
+public class FortuneController {
     int fn3;
 
-    @GetMapping("/")
-    String index() {
-        return "index";
-    }
+//    @GetMapping("/")
+//    String index() {
+//        return "index";
+//    }
 
     @RequestMapping("/fortune")
     public String start(Model model) {

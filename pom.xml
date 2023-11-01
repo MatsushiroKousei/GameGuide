@@ -72,8 +72,12 @@
 			<artifactId>webjars-locator</artifactId>
 			<version>0.40</version>
 		</dependency>
+		<!--	コンタクトメール送信用-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
