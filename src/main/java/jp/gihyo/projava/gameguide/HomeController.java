@@ -46,7 +46,6 @@ public class HomeController {
 
     @GetMapping("/postblog")//
     String postBlog(Model model,BlogRequest blogRequest) {
-
         return "postblog";
     }
 
@@ -107,7 +106,11 @@ public class HomeController {
         return "edit";
     }
         @PostMapping("/blog/edit")
-    public String editBlog(@ModelAttribute BlogRequest request) {
+    public String editBlog(@ModelAttribute @Validated BlogRequest request,BindingResult result) {
+        if (result.hasErrors()){
+            return "/edit";
+        }
+
         Blog blog = service.getByIdBlog(request.getId());
         blog.setTitle(request.getTitle());
         blog.setText(request.getContents());
