@@ -6,7 +6,6 @@
     <!--    <link rel="stylesheet" th:href="@{/css/mainstyle.css}" />-->
     <!--    <script></script>-->
 </head>
-
 <body>
 <div class="wrapper">
 
@@ -22,7 +21,7 @@
             </div>
             <h2>記事の投稿</h2>
             <hr>
-            <form th:action="@{blog/add}" th:object="${blogRequest}" novalidate>
+            <form th:action="@{/blog/add}" th:object="${blogRequest}" method="post" novalidate>
                 <div class="input_form">
                     <h3>タイトルを記入※</h3>
                     <span class="errorStr" th:errors="*{title}"></span>

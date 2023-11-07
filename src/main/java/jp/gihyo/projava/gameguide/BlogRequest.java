@@ -7,11 +7,11 @@ import lombok.Data;
 @Data
 public class BlogRequest {
 
-    @NotBlank
+    @NotBlank(message = "")
     @Size(min = 5,message = "5文字以上記入してください。")
     private String title;
 
-    @NotBlank
+    @NotBlank(message = "")
     @Size(min = 10,message = "10文字以上記入してください。")
     private String contents;
 

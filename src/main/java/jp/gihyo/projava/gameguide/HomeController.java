@@ -44,7 +44,7 @@ public class HomeController {
         return "index"; //ホームページ
     }
 
-    @GetMapping("/postblog")//
+    @GetMapping("/postblog")
     String postBlog(Model model,BlogRequest blogRequest) {
         return "postblog";
     }
@@ -62,8 +62,8 @@ public class HomeController {
     }
 
     @PostMapping("/blog/add")
-    String post(Model model, @Validated @ModelAttribute BlogRequest blogRequest,BindingResult result) {
-        if (result.hasErrors()){
+    String post(Model model, @ModelAttribute @Validated BlogRequest blogRequest,BindingResult result) {
+        if (result.hasErrors()) {
             return postBlog(model,blogRequest);
         }
         service.create(blogRequest);
@@ -96,19 +96,17 @@ public class HomeController {
     }
 
     @GetMapping("/update/{id}")
-    String GetUpdate(@PathVariable("id") Integer id, Model model) {
+    String GetUpdate(@PathVariable("id") Integer id, Model model,BlogRequest br) {
         Blog blog = service.getByIdBlog(id);
-        BlogRequest br = new BlogRequest();
         br.setTitle(blog.getTitle());
         br.setContents(blog.getText());
         br.setId(id);
-        model.addAttribute("blogRequest", br);
         return "edit";
     }
         @PostMapping("/blog/edit")
-    public String editBlog(@ModelAttribute @Validated BlogRequest request,BindingResult result) {
+    public String editBlog(Model model,@ModelAttribute @Validated BlogRequest request,BindingResult result,Integer id) {
         if (result.hasErrors()){
-            return "/edit";
+            return GetUpdate(id,model,request);
         }
 
         Blog blog = service.getByIdBlog(request.getId());
