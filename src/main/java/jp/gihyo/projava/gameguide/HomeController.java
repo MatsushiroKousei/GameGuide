@@ -28,27 +28,33 @@ public class HomeController {
 
     @GetMapping("/")
     String toppage(Model model) {
-        List<Blog> blogs = service.getBlogTop3();            //serviceクラスのgetBlogTop3()が呼び出される
-        List<Blog> blogs1 = service.BlogDate();             //serviceクラスのBlogDate()が呼び出される
-        model.addAttribute("blogs", blogs);     //List<Blog> blogs が"blogs"としてhtmlで扱えるようになる
-        model.addAttribute("blogsDate", blogs1);//List<Blog> blogs1が"blogs1"としてhtmlで扱えるようになる
+        List<Blog> blogs = service.getBlogTop3();
+        List<Blog> blogs1 = service.BlogDate();
+        model.addAttribute("blogs", blogs);
+        model.addAttribute("blogsDate", blogs1);
         return "index"; //ホームページ
     }
 
     @GetMapping("/index")
     String index(Model model) {
-        List<Blog> blogs = service.getBlogTop3();            //serviceクラスのgetBlogTop3()が呼び出される
-        List<Blog> blogs1 = service.BlogDate();             //serviceクラスのBlogDate()が呼び出される
-        model.addAttribute("blogs", blogs);     //List<Blog> blogs が"blogs"としてhtmlで扱えるようになる
-        model.addAttribute("blogsDate", blogs1);//List<Blog> blogs1が"blogs1"としてhtmlで扱えるようになる
-        return "index"; //ホームページ
+        List<Blog> blogs = service.getBlogTop3();
+        List<Blog> blogs1 = service.BlogDate();
+        model.addAttribute("blogs", blogs);
+        model.addAttribute("blogsDate", blogs1);
+        return "index";
     }
 
+    /*
+    投稿画面表示
+     */
     @GetMapping("/postblog")
     String postBlog(Model model,BlogRequest blogRequest) {
         return "postblog";
     }
 
+    /*
+    各閲覧数を表示
+     */
     @GetMapping("/blog/{id}")
     String viewBlog(Model model, @PathVariable("id") Integer id) {
         Blog blog = service.getByIdBlog(id);
@@ -61,6 +67,9 @@ public class HomeController {
         return "blog";
     }
 
+    /*
+    投稿処理
+     */
     @PostMapping("/blog/add")
     String post(Model model, @ModelAttribute @Validated BlogRequest blogRequest,BindingResult result) {
         if (result.hasErrors()) {
@@ -69,6 +78,10 @@ public class HomeController {
         service.create(blogRequest);
         return "redirect:/index";
     }
+
+    /*
+    削除処理
+     */
     @GetMapping("/blog/delete/{id}")
     public String deleteBlog(@PathVariable Integer id) {
         Blog blog = service.getByIdBlog(id);
@@ -76,7 +89,9 @@ public class HomeController {
         return "redirect:/index";
     }
 
-
+    /*
+    いいね数表示（閲覧数とほとんど同じ仕様）
+     */
     @GetMapping("/good/{id}")
     String goodBlog(Model model, @PathVariable("id") Integer id) {
         Blog blog = service.getByIdBlog(id);
@@ -95,20 +110,26 @@ public class HomeController {
         return "redirect:/blog/" + id;
     }
 
+    /*
+    更新画面表示
+     */
     @GetMapping("/update/{id}")
     String GetUpdate(@PathVariable("id") Integer id, Model model,BlogRequest br) {
         Blog blog = service.getByIdBlog(id);
-        br.setTitle(blog.getTitle());
-        br.setContents(blog.getText());
+        br.setTitle(blog.getTitle()); //タイトルを更新画面にセット
+        br.setContents(blog.getText()); //内容を更新画面にセット
         br.setId(id);
         return "edit";
     }
+
+    /*
+    更新処理
+     */
         @PostMapping("/blog/edit")
     public String editBlog(Model model,@ModelAttribute @Validated BlogRequest request,BindingResult result,Integer id) {
         if (result.hasErrors()){
             return GetUpdate(id,model,request);
         }
-
         Blog blog = service.getByIdBlog(request.getId());
         blog.setTitle(request.getTitle());
         blog.setText(request.getContents());
