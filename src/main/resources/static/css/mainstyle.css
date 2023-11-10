@@ -2,6 +2,11 @@ html {
     scroll-behavior: smooth;
 }
 
+.errorStr{
+    color:red;
+    font-weight:500;
+}
+
 body {
     background-color: #000;
     margin: 0;
